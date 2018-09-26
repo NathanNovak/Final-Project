@@ -2,8 +2,9 @@ import React from "react";
 import { Platform, StatusBar, Text, StyleSheet, View, ImageBackground, Alert } from "react-native";
 import { createStackNavigator } from 'react-navigation';
 import loginScreen from './Screens/loginScreen';
-import homeScreen from './Screens/homeScreen'
-
+import homeScreen from './Screens/homeScreen';
+import profileScreen from './Screens/homeScreen';
+import resultScreen from './Screens/homeScreen';
 
 export default class App extends React.Component {
   render(){
@@ -14,5 +15,7 @@ export default class App extends React.Component {
 }
 const AppStackNavigator = createStackNavigator({
   Login: loginScreen,
-  Home: homeScreen
+  Home: homeScreen,
+  Profile: profileScreen,
+  Result: resultScreen
 })
