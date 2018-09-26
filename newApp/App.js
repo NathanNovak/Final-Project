@@ -3,8 +3,8 @@ import { Platform, StatusBar, Text, StyleSheet, View, ImageBackground, Alert } f
 import { createStackNavigator } from 'react-navigation';
 import loginScreen from './Screens/loginScreen';
 import homeScreen from './Screens/homeScreen';
-import profileScreen from './Screens/homeScreen';
-import resultScreen from './Screens/homeScreen';
+import profileScreen from './Screens/profileScreen';
+import resultScreen from './Screens/resultScreen';
 
 export default class App extends React.Component {
   render(){
