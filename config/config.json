@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "sleepy12",
     "database": "Spent_Grain_DB",
     "host": "127.0.0.1",
     "dialect": "mysql"
