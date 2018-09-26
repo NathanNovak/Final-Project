@@ -73,6 +73,7 @@ class homeScreen extends Component {
                 </Text>
                 <Button
                   title="Profile"
+                  onPress={() => this.props.navigation.navigate("Profile")}
                   buttonStyle={{
                     backgroundColor: "blue",
                     width: 60,

@@ -2,7 +2,7 @@ import React from "react";
 import { Platform, StatusBar, Text, StyleSheet, View, ImageBackground, Alert } from "react-native";
 import { createStackNavigator } from 'react-navigation';
 import loginScreen from './Screens/loginScreen';
-import homeScreen from './Screens/homeScreen';
+import homeScreen from './Screens/HomeScreen';
 import profileScreen from './Screens/profileScreen';
 import resultScreen from './Screens/resultScreen';
 
