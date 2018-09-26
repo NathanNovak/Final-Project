@@ -8,11 +8,11 @@ import homeScreen from './Screens/homeScreen'
 export default class App extends React.Component {
   render(){
     return(
-     <AppStackNavigaor />
+     <AppStackNavigator />
     );
   }
 }
-const AppStackNavigaor = createStackNavigator({
+const AppStackNavigator = createStackNavigator({
   Login: loginScreen,
   Home: homeScreen
 })
