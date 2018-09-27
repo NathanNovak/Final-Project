@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/NathanNovak/Final-Project#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
     "express": "^4.16.3",
     "mysql2": "^1.6.1",
     "path": "^0.12.7",
