@@ -2,14 +2,56 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Brewer = sequelize.define("Brewer", {
-    brewerName: {
+    BreweryName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        min: 1
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 1
+      }
+    },
+    phone: {
+			type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 12,
+        not: ["[a-z]",'i']
+      }
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+      validate: {
+        min: 1,
+        isEmail: true
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      validate: {
+       len: [2, 500]
+      }
+    },
+    hours: {
+      type: DataTypes.STRING
+    },
+    password: {
+			type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 8
+      }
+		},
+		loggedIn: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
+		}
   });
 
   return Brewer;

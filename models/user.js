@@ -2,20 +2,34 @@
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("Users", {
-		password: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
+		
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+			allowNull: false,
+			validate: {
+        min: 1,
+        isEmail: true
+      }
 		},
-		authToken: {
-			type: DataTypes.STRING
+		phone: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+        min: 12,
+        not: ["[a-z]",'i']
+      }
+		},
+		password: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+        min: 8,
+      }
+		},
+		loggedIn: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
 		}
-		// brewer: {
-		// 	type:DataTypes.boolean
-		// }
   });
 
   return User;

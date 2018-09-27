@@ -2,12 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 // const path = require("path");
 
-// const routes = require("./routes/api/apiRoutes");
+const routes = require("./routes/apiRoutes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 var db = require("./models");
-
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-// app.use("/api", routes);
+app.use("/api", routes);
 
 var syncOptions = { force: false };
 
