@@ -26,9 +26,12 @@ router.post("/user", (req, res) => {
 // });
 
 
-router.get("/user", (req, res) => {
-  controller.findAll(res);
-});
+// router.get("/user", (req, res) => {
+//   controller.findAll(res);
+// });
+
+router.route("/users")
+ .post(controller.UserController.create);
 
 router.route("/brewers")
   .get(controller.BrewerController.findAll)

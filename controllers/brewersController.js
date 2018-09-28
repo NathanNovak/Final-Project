@@ -1,4 +1,5 @@
 const db = require("../models");
+const bcrypt = require('bcryptjs');
 
 // Defining methods for the booksController
 module.exports = {
@@ -13,7 +14,8 @@ module.exports = {
 
   create: function(req, res) {
     console.log("Post Brewer", res)
-
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync("Password" , salt);
     db.Brewer.create({
       BreweryName: "Tylers's Place", 
       address: '8888 e Broadway st', 
@@ -23,7 +25,7 @@ module.exports = {
       email: 'n@n.com',
       description: 'Yes All',
       hours: '9-5',
-      password: 'HashMan3',
+      password: hash,
       loggedIn: 'false'
        }).then(function(dbModel) {
       res.json(dbModel);
