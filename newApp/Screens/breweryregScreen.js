@@ -12,15 +12,11 @@ import PasswordInputText from "react-native-hide-show-password-input";
 import { Input, Button, Overlay } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-class loginScreen extends Component {
+class breweryregScreen extends Component {
   state = {
     isVisible: true,
     user: "",
     password: ""
-  };
-
-  static navigationOptions = {
-    header: null
   };
   
   render() {
@@ -29,7 +25,7 @@ class loginScreen extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-        <View style={styles.overlayContainer}>
+      <View style={styles.overlayContainer}>
           <View style={styles.top}>
             <Text style={styles.header}>S P E N T G R A I N S</Text>
           </View>
@@ -46,9 +42,8 @@ class loginScreen extends Component {
               onChangeText={password => this.setState({ password })}
             />
             <Button
-              icon={<Icon name="sign-in" size={15} color="white" />}
-              title="LOG IN"
-              onPress={() => this.props.navigation.navigate("Home")}
+              title="GO TO PROFILE"
+              onPress={() => this.props.navigation.navigate("Profile")}
               buttonStyle={{
                 borderRadius: 5,
                 width: 200,
@@ -56,25 +51,6 @@ class loginScreen extends Component {
                 margin: 5
               }}
             />
-            <Button
-              title="REGISTER USER"
-              onPress={() => this.props.navigation.navigate("UserReg")}
-              buttonStyle={{
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5
-              }}
-            />
-            <Button 
-              title="REGISTER BREWERY"
-              onPress={() => this.props.navigation.navigate("BrewReg")}
-              buttonStyle={{
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5
-              }}
             />
           </Overlay>
         </View>
@@ -83,7 +59,7 @@ class loginScreen extends Component {
   }
 }
 
-export default loginScreen;
+export default breweryregScreen;
 
 const styles = StyleSheet.create({
   container: {
