@@ -12,21 +12,20 @@ import PasswordInputText from "react-native-hide-show-password-input";
 import { Input, Button, Overlay } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-class userregScreen extends Component { 
-  
+class userregScreen extends Component {
   state = {
     isVisible: true,
     user: "",
     password: ""
   };
-  
+
   render() {
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-      <View style={styles.overlayContainer}>
+        <View style={styles.overlayContainer}>
           <View style={styles.top}>
             <Text style={styles.header}>S P E N T G R A I N S</Text>
           </View>
@@ -51,7 +50,6 @@ class userregScreen extends Component {
                 alignSelf: "center",
                 margin: 5
               }}
-            />
             />
           </Overlay>
         </View>

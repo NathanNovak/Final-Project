@@ -18,14 +18,14 @@ class breweryregScreen extends Component {
     user: "",
     password: ""
   };
-  
+
   render() {
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-      <View style={styles.overlayContainer}>
+        <View style={styles.overlayContainer}>
           <View style={styles.top}>
             <Text style={styles.header}>S P E N T G R A I N S</Text>
           </View>
@@ -50,7 +50,6 @@ class breweryregScreen extends Component {
                 alignSelf: "center",
                 margin: 5
               }}
-            />
             />
           </Overlay>
         </View>
