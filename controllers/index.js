@@ -1,5 +1,5 @@
 module.exports = {
-    Beer: require("./beerController"),
-    Brewer: require("./brewersController"),
-    User: require("./userController")
+    BeerController: require("./beerController"),
+    BrewerController: require("./brewersController"),
+    UserController: require("./userController")
 }
