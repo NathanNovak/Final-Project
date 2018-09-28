@@ -6,17 +6,27 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Alert
+  Alert,
+  ScrollView
 } from "react-native";
 import PasswordInputText from "react-native-hide-show-password-input";
-import { Input, Button, Overlay } from "react-native-elements";
+import { Input, Button, Overlay, FormLabel, FormInput, FormValidationMessage } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 class breweryregScreen extends Component {
   state = {
     isVisible: true,
-    user: "",
-    password: ""
+    
+    password: "",
+    breweryname: "",
+    streetaddress: "",
+    emailaddress: "",
+    password: "",
+    phonenumber:"",
+    city:"",
+    st:"",
+    hours:"",
+    zipcode:"",
   };
 
   render() {
@@ -30,14 +40,56 @@ class breweryregScreen extends Component {
             <Text style={styles.header}>S P E N T G R A I N S</Text>
           </View>
           <Overlay isVisible={this.state.isVisible}>
+          <Input
+              placeholder="Enter Brewery Name"
+              keyboardType="default"
+              value={this.state.breweryname}
+              onChangeText={breweryname => this.setState({breweryname})}
+            />
             <Input
-              placeholder="Email or Username"
-              rightIcon={<Icon name="user" size={24} color="black" />}
+              placeholder="Enter Street Address"
+              keyboardType="default"
+              value={this.state.streetaddress}
+              onChangeText={streetaddress => this.setState({streetaddress})}
+            />
+            <Input
+              placeholder="Enter City"
+              keyboardType="default"
+              value={this.state.city}
+              onChangeText={city => this.setState({city})}
+            />
+            <Input
+              placeholder="Enter State"
+              keyboardType="default"
+              value={this.state.st}
+              onChangeText={st => this.setState({st})}
+            />
+            <Input
+              placeholder="Enter Zipcode"
+              keyboardType="numeric"
+              value={this.state.zipcode}
+              onChangeText={zipcode=> this.setState({zipcode})}
+            />
+            <Input
+              placeholder="Enter Phonenumber"
+              keyboardType="numbers-and-punctuation"
+              value={this.state.phonenumber}
+              onChangeText={phonenumber => this.setState({ phonenumber })}
+            />
+             <Input
+              placeholder="Enter Hours of Operation"
+              keyboardType="numbers-and-punctuation"
+              value={this.state.hours}
+              onChangeText={hours => this.setState({ hours })}
+            />
+            <Input
+              placeholder="Enter Email "
               keyboardType="email-address"
-              value={this.state.user}
-              onChangeText={user => this.setState({ user })}
+              value={this.state.emailaddress}
+              onChangeText={emailaddress => this.setState({ emailaddress })}
             />
             <PasswordInputText
+              placeholder="Create Password"
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />

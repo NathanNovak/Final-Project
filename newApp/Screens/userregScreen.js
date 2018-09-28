@@ -15,8 +15,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 class userregScreen extends Component {
   state = {
     isVisible: true,
-    user: "",
-    password: ""
+    fname: "",
+    lname: "",
+    emailaddress: "",
+    password: "",
+    phonenumber: "",
   };
 
   render() {
@@ -30,14 +33,32 @@ class userregScreen extends Component {
             <Text style={styles.header}>S P E N T G R A I N S</Text>
           </View>
           <Overlay isVisible={this.state.isVisible}>
+          <Input
+              placeholder="Enter First Name"
+              keyboardType="default"
+              value={this.state.fname}
+              onChangeText={fname => this.setState({fname})}
+            />
             <Input
-              placeholder="Email or Username"
-              rightIcon={<Icon name="user" size={24} color="black" />}
+              placeholder="Enter Last Name"
+              keyboardType="default"
+              value={this.state.lname}
+              onChangeText={lname => this.setState({lname})}
+            />
+          <Input
+              placeholder="Enter Phonenumber"
+              keyboardType="numbers-and-punctuation"
+              value={this.state.phonenumber}
+              onChangeText={phonenumber => this.setState({ phonenumber })}
+          />
+            <Input
+              placeholder="Enter Email "
               keyboardType="email-address"
-              value={this.state.user}
-              onChangeText={user => this.setState({ user })}
+              value={this.state.emailaddress}
+              onChangeText={emailaddress => this.setState({ emailaddress })}
             />
             <PasswordInputText
+              placeholder="Create Password"
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />

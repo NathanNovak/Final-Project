@@ -15,7 +15,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 class loginScreen extends Component {
   state = {
     isVisible: true,
-    user: "",
+    emailaddress: "",
     password: ""
   };
 
@@ -35,11 +35,11 @@ class loginScreen extends Component {
           </View>
           <Overlay isVisible={this.state.isVisible}>
             <Input
-              placeholder="Email or Username"
+              placeholder="Email"
               rightIcon={<Icon name="user" size={24} color="black" />}
               keyboardType="email-address"
-              value={this.state.user}
-              onChangeText={user => this.setState({ user })}
+              value={this.state.emailaddress}
+              onChangeText={emailaddress => this.setState({ emailaddress })}
             />
             <PasswordInputText
               value={this.state.password}
