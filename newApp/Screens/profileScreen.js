@@ -5,9 +5,15 @@ import {
   View,
   ImageBackground,
   Text,
-  Image
+  Image,
+  Alert,
 } from "react-native";
 import { Avatar, Card, Button, Icon } from "react-native-elements";
+
+
+state = {
+  isImageViewVisible: false
+};
 
 class profileScreen extends Component {
   state = {};
@@ -19,7 +25,6 @@ class profileScreen extends Component {
       >
         <View
           style={{
-            flex: 1,
             flexDirection: "row",
             alignItems: "stretch",
             justifyContent: "center",
@@ -36,25 +41,24 @@ class profileScreen extends Component {
         </View>
         <ScrollView
           style={{
-            flex: 1
+            flex: 4
           }}
         >
-          <View>
-            <Card title="CARD WITH DIVIDER">
-              {users.map((u, i) => {
-                return (
-                  <View key={i} style={styles.user}>
-                    <Image
-                      style={styles.image}
-                      resizeMode="cover"
-                      source={{ uri: u.avatar }}
-                    />
-                    <Text style={styles.name}>{u.name}</Text>
-                  </View>
-                );
-              })}
-            </Card>
-          </View>
+          <Card
+            title="User Name"
+            style={{
+              marginBottom: 5
+            }}
+          >
+            <View>
+              <Text>Email:</Text>
+              <Text>Password:</Text>
+              <Button
+                onPress={() => this.props.navigation.navigate("Photos")}
+                title="VIEW PHOTOS"
+              />
+            </View>
+          </Card>
         </ScrollView>
       </ImageBackground>
     );
@@ -71,17 +75,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const users = [
-  {
-    name: "brynn",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg"
-  },
-  {
-    name: "brynn",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg"
-  },
-  {
-    name: "brynn",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg"
-  }
-];
+
