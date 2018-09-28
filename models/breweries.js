@@ -12,9 +12,14 @@ module.exports = function(sequelize, DataTypes) {
     address: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        min: 1
-      }
+    },
+     city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     phone: {
 			type: DataTypes.STRING,
