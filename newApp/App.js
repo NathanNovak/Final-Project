@@ -5,6 +5,8 @@ import loginScreen from './Screens/loginScreen';
 import homeScreen from './Screens/HomeScreen';
 import profileScreen from './Screens/profileScreen';
 import resultScreen from './Screens/resultScreen';
+import breweryregScreen from './Screens/breweryregScreen';
+import userregScreen from './Screens/userregScreen';
 
 export default class App extends React.Component {
   render(){
@@ -17,5 +19,7 @@ const AppStackNavigator = createStackNavigator({
   Login: loginScreen,
   Home: homeScreen,
   Profile: profileScreen,
-  Result: resultScreen
+  Result: resultScreen,
+  BrewReg: breweryregScreen,
+  UserReg: userregScreen
 })
