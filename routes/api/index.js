@@ -5,4 +5,4 @@ const appRoutes = require("./apiRoutes");
 router.use("/brewers", appRoutes);
 router.use("/users", appRoutes);
 
-module.exports = router;
+module.exports = router; 

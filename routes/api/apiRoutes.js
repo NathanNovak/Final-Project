@@ -35,7 +35,7 @@ router.route("/brewers")
   .post(controller.BrewerController.create);
 
 router.route("brewers/:id")
-  .get(controller.BrewerController.findById)
+  .get(controller.BrewerController.findById) 
 
 // router.route("/users")
 //   .get(controller.UserController.findAll);  

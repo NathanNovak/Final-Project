@@ -31,7 +31,7 @@ module.exports = {
   });
   },
 
-  findById: function(req, res) {
+  findById: function(req, res) {  
     console.log(req.params)
     db.Brewer
       .findById(req.params.id)
