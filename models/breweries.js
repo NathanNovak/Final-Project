@@ -21,6 +21,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    zip: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        max: 5,
+        not: ["[a-z]",'i']
+      }
+    },
     phone: {
 			type: DataTypes.STRING,
       allowNull: false,
