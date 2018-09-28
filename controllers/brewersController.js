@@ -17,13 +17,14 @@ module.exports = {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("Password" , salt);
     db.Brewer.create({
-      BreweryName: "Tylers's Place", 
-      address: '8888 e Broadway st', 
+      BreweryName: "Irish Hound", 
+      address: '4587 e University st', 
       city: 'tucson', 
       state: 'az',
-      phone: '888-888-4568',
+      zip: '85740',
+      phone: '888-222-3455',
       email: 'n@n.com',
-      description: 'Yes All',
+      description: 'HOWWEEELLLL',
       hours: '9-5',
       password: hash,
       loggedIn: 'false'

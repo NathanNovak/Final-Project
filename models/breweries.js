@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        max: 5,
+        // max: 10,
         not: ["[a-z]",'i']
       }
     },
