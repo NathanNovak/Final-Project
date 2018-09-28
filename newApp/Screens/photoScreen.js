@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ImageBackground } from "react-native";
-
-class resultScreen extends Component {
-  state = {
-    isVisible: true,
-    user: "",
-    password: ""
-  };
+import { StyleSheet, ImageBackground } from "react-native";
+class photoScreen extends Component {
   render() {
     return (
       <ImageBackground
@@ -17,7 +11,7 @@ class resultScreen extends Component {
   }
 }
 
-export default resultScreen;
+export default photoScreen;
 
 const styles = StyleSheet.create({
   container: {
