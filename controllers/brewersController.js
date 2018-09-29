@@ -16,6 +16,7 @@ module.exports = {
     console.log("Post Brewer", res)
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("Password" , salt);
+  
     db.Brewer.create({
       BreweryName: "Tylers's Place", 
       address: '8888 e Broadway st', 
