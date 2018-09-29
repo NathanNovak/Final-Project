@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API.js";
 import {
   Platform,
   StatusBar,
@@ -21,6 +22,18 @@ class userregScreen extends Component {
     password: "",
     phonenumber: "",
   };
+
+  handleClick = user => {
+    // event.preventDefault
+    // console.log("Test", user)
+    API.saveUser({
+      fname: "Nathan",
+      lname: "Novak",
+      emailaddress: "n@n.com",
+      password: "123546",
+      phonenumber: "1234536789"
+    })
+  }
 
   render() {
     return (
@@ -64,7 +77,8 @@ class userregScreen extends Component {
             />
             <Button
               title="GO TO PROFILE"
-              onPress={() => this.props.navigation.navigate("Profile")}
+              // onPress={() => this.props.navigation.navigate("Profile")}
+              onPress = {this.handleClick}
               buttonStyle={{
                 borderRadius: 5,
                 width: 200,

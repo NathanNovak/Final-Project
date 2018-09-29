@@ -4,8 +4,9 @@ module.exports = function(sequelize, DataTypes) {
   var Beer = sequelize.define("Beer", {
     beerName: DataTypes.STRING,
     brewer: DataTypes.STRING,
-    IBU: DataTypes.DECIMAL,
-    Tasting_Notes: DataTypes.STRING
+    IBU: DataTypes.STRING,
+    ABV: DataTypes.STRING,
+    tastingNotes: DataTypes.STRING
   });
 
   return Beer;

@@ -13,9 +13,9 @@ module.exports = {
       loggedIn: "false"
     };
     db.Users.create({
-      firstName: "Bob",
+      firstName: "Nathan",
       lastName: "Smith",
-      email: "ncortes1415@gmail.com",
+      email: "nathan.novak79@gmail.com",
       phone: "520-665-9464",
       password: hash
     }).then(function (dbModel) {
