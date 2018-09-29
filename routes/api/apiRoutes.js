@@ -1,11 +1,10 @@
-const axios = require("axios");
 const router = require("express").Router();
 const controller = require("../../controllers");
-var db = require("../../models");
+// var db = require("../../models");
 
-router.post("/user", (req, res) => {
+// router.post("/user", (req, res) => {
   // dbController.create(req, res);
-});
+// });
 // router.post("/brewers", (req, res) => { 
 //   // dbController.create(req, res);
 //   db.Brewer.create({
@@ -31,16 +30,18 @@ router.post("/user", (req, res) => {
 // });
 
 router.route("/users")
- .post(controller.UserController.create);
+.get(controller.UserController.findAll)
+.post(controller.UserController.create);
+
+router.route("/users/:id")
+  .get(controller.UserController.findById) 
 
 router.route("/brewers")
   .get(controller.BrewerController.findAll)
   .post(controller.BrewerController.create);
 
-router.route("brewers/:id")
-  .get(controller.BrewerController.findById) 
-
-// router.route("/users")
-//   .get(controller.UserController.findAll);  
+router.route("/brewers/:id")
+  .get(controller.BrewerController.findById)
+  .delete(controller.BrewerController.delete) 
 
 module.exports = router;
