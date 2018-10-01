@@ -80,8 +80,9 @@ class profileScreen extends Component {
             containerStyle={{
               marginBottom: 5,
               alignItems: "stretch",
-              justifyContent: "center"
-            }}
+              justifyContent: "center",
+              marginLeft: 0,
+              marginRight:0}}
           >
             <Text>Email:</Text>
             <Text>Password:</Text>

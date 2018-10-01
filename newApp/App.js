@@ -7,6 +7,7 @@ import profileScreen from './Screens/profileScreen';
 import resultScreen from './Screens/resultScreen';
 import breweryregScreen from './Screens/breweryregScreen';
 import userregScreen from './Screens/userregScreen';
+import cameraScreen from "./Screens/cameraScreen";
 
 
 export default class App extends React.Component {
@@ -22,6 +23,7 @@ const AppStackNavigator = createStackNavigator({
   Profile: profileScreen,
   Result: resultScreen,
   BrewReg: breweryregScreen,
-  UserReg: userregScreen
+  UserReg: userregScreen,
+  Camera: cameraScreen
 
 })
