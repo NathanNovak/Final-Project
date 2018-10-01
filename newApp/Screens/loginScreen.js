@@ -22,7 +22,7 @@ class loginScreen extends Component {
   static navigationOptions = {
     header: null
   };
-  
+
   render() {
     return (
       <ImageBackground
@@ -66,9 +66,19 @@ class loginScreen extends Component {
                 margin: 5
               }}
             />
-            <Button 
+            <Button
               title="REGISTER BREWERY"
               onPress={() => this.props.navigation.navigate("BrewReg")}
+              buttonStyle={{
+                borderRadius: 5,
+                width: 200,
+                alignSelf: "center",
+                margin: 5
+              }}
+            />
+            <Button
+              title="TAKE A PHOTO"
+              onPress={() => this.props.navigation.navigate("Camera")}
               buttonStyle={{
                 borderRadius: 5,
                 width: 200,
