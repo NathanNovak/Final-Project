@@ -6,16 +6,16 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Alert
+  Alert, 
 } from "react-native";
 import PasswordInputText from "react-native-hide-show-password-input";
-import { Input, Button, Overlay } from "react-native-elements";
+import { Input, Button, Overlay, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 class loginScreen extends Component {
   state = {
     isVisible: true,
-    emailaddress: "",
+    user: "",
     password: ""
   };
 
@@ -27,21 +27,27 @@ class loginScreen extends Component {
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
-        style={styles.container}
+        style={styles.container} 
       >
-        <View style={styles.overlayContainer}>
-          <View style={styles.top}>
-            <Text style={styles.header}>S P E N T G R A I N S</Text>
-          </View>
-          <Overlay isVisible={this.state.isVisible}>
-            <Input
+        <View>
+          <Text style={styles.header} containerStyle={{backgroundColor: "#d3d3d3", opacity: 0.7 }}>S P E N T   G R A I N S</Text>
+
+          <Card
+            style={styles.overlayContainer} containerStyle={{backgroundColor: "#d3d3d3", opacity: 0.7 }}
+            isVisible={this.state.isVisible}
+          >
+            <Input 
+              style={styles.inputStyle} 
+              placeholderTextColor = "black"
               placeholder="Email"
               rightIcon={<Icon name="user" size={24} color="black" />}
               keyboardType="email-address"
-              value={this.state.emailaddress}
-              onChangeText={emailaddress => this.setState({ emailaddress })}
+              value={this.state.user}
+              onChangeText={user => this.setState({ user })}
             />
             <PasswordInputText
+              placeholder = "Password"
+              placeholderTextColor = "black"
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />
@@ -50,6 +56,7 @@ class loginScreen extends Component {
               title="LOG IN"
               onPress={() => this.props.navigation.navigate("Home")}
               buttonStyle={{
+                backgroundColor: "black",
                 borderRadius: 5,
                 width: 200,
                 alignSelf: "center",
@@ -60,6 +67,7 @@ class loginScreen extends Component {
               title="REGISTER USER"
               onPress={() => this.props.navigation.navigate("UserReg")}
               buttonStyle={{
+                backgroundColor: "black",
                 borderRadius: 5,
                 width: 200,
                 alignSelf: "center",
@@ -70,6 +78,7 @@ class loginScreen extends Component {
               title="REGISTER BREWERY"
               onPress={() => this.props.navigation.navigate("BrewReg")}
               buttonStyle={{
+                backgroundColor: "black",
                 borderRadius: 5,
                 width: 200,
                 alignSelf: "center",
@@ -87,6 +96,7 @@ class loginScreen extends Component {
               }}
             />
           </Overlay>
+          </Card>
         </View>
       </ImageBackground>
     );
@@ -101,22 +111,29 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%"
   },
-  overlayContainer: {
-    flex: 1
-  },
-  top: {
-    height: "50%",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   header: {
+    textAlign: "center",
     color: "black",
+    padding: 20,
     fontSize: 28,
     borderColor: "black",
     borderWidth: 2,
-    padding: 20,
-    paddingLeft: 40,
-    paddingRight: 40,
-    backgroundColor: "white"
-  }
+    height: "15%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "20%",
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginBottom: "20%",
+    backgroundColor: "#d3d3d3"
+  },
+  overlayContainer: {
+    color: "black",
+    alignItems: "center",
+    height: "50%",
+    backgroundColor: "#d3d3d3"
+  }, 
+  inputStyle: {
+    
+  },
 });
