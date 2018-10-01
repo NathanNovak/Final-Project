@@ -95,7 +95,6 @@ class loginScreen extends Component {
                 margin: 5
               }}
             />
-          </Overlay>
           </Card>
         </View>
       </ImageBackground>
