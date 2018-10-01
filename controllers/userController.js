@@ -3,7 +3,8 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   create: function (req, res) {
-    console.log("CREATE");
+    console.log("CREATE", req.body);
+//    res.json("Tacos")
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("Password", salt);
     let user = {
@@ -12,13 +13,14 @@ module.exports = {
       password: hash,
       loggedIn: "false"
     };
-    db.Users.create({
-      firstName: "Nathan",
-      lastName: "Smith",
-      email: "nathan.novak79@gmail.com",
-      phone: "520-665-9464",
-      password: hash
-    }).then(function (dbModel) {
+    db.Users.create(
+    //   firstName: "Sam ",
+    //   lastName: "Jackson",
+    //   email: "n@n.com",
+    //   phone: "520-665-9464",
+    //   password: hash
+    req.body
+    ).then(function (dbModel) {
       res.json(dbModel);
       console.log("POSTED", dbModel);
     });

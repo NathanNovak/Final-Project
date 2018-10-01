@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "sleepy12",
-    "database": "Spent_Grain_DB",
-    "host": "127.0.0.1",
+    "username": "nnovak79",
+    "password": "nnovak7737",
+    "database": "Spent_Grains",
+    "host": "rds-mysql-10mintutorial.ci6mhwryhrux.us-west-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
@@ -14,10 +14,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "nnovak79",
+    "password": "nnovak7737",
+    "database": "Spent_Grains",
+    "host": "rds-mysql-10mintutorial.ci6mhwryhrux.us-west-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
+
