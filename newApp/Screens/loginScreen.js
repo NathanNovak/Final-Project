@@ -6,7 +6,7 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Alert, 
+  Alert
 } from "react-native";
 import PasswordInputText from "react-native-hide-show-password-input";
 import { Input, Button, Overlay, Card } from "react-native-elements";
@@ -28,18 +28,24 @@ class loginScreen extends Component {
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
-        style={styles.container} 
+        style={styles.container}
       >
         <View>
-          <Text style={styles.header} containerStyle={{backgroundColor: "#d3d3d3", opacity: 0.7 }}>S P E N T   G R A I N S</Text>
+          <Text
+            style={styles.header}
+            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
+          >
+            S P E N T G R A I N S
+          </Text>
 
           <Card
-            style={styles.overlayContainer} containerStyle={{backgroundColor: "#d3d3d3", opacity: 0.7 }}
+            style={styles.overlayContainer}
+            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
             isVisible={this.state.isVisible}
           >
-            <Input 
-              style={styles.inputStyle} 
-              placeholderTextColor = "black"
+            <Input
+              style={styles.inputStyle}
+              placeholderTextColor="black"
               placeholder="Email"
               rightIcon={<Icon name="user" size={24} color="black" />}
               keyboardType="email-address"
@@ -47,54 +53,45 @@ class loginScreen extends Component {
               onChangeText={user => this.setState({ user })}
             />
             <PasswordInputText
-              placeholder = "Password"
-              placeholderTextColor = "black"
+              placeholder="Password"
+              placeholderTextColor="black"
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />
             <Button
+              buttonStyle={{
+                backgroundColor: "black",
+                borderRadius: 5,
+                width: 200,
+                alignSelf: "center",
+                margin: 5,
+              }}
               icon={<Icon name="sign-in" size={15} color="white" />}
               title="LOG IN"
               onPress={() => this.props.navigation.navigate("Home")}
+            />
+            <Button
               buttonStyle={{
                 backgroundColor: "black",
                 borderRadius: 5,
                 width: 200,
                 alignSelf: "center",
-                margin: 5
+                margin: 5,
               }}
-            />
-            <Button
               title="REGISTER USER"
               onPress={() => this.props.navigation.navigate("UserReg")}
+            />
+            <Button
               buttonStyle={{
                 backgroundColor: "black",
                 borderRadius: 5,
                 width: 200,
                 alignSelf: "center",
-                margin: 5
+                margin: 5,
+                zIndex: 1
               }}
-            />
-            <Button
               title="REGISTER BREWERY"
               onPress={() => this.props.navigation.navigate("BrewReg")}
-              buttonStyle={{
-                backgroundColor: "black",
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5
-              }}
-            />
-            <Button
-              title="TAKE A PHOTO"
-              onPress={() => this.props.navigation.navigate("Camera")}
-              buttonStyle={{
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5
-              }}
             />
           </Card>
         </View>
@@ -132,8 +129,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "50%",
     backgroundColor: "#d3d3d3"
-  }, 
-  inputStyle: {
-    
-  },
+  }
 });

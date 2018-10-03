@@ -8,11 +8,15 @@ import {
   ScrollView
 } from "react-native";
 import { SearchBar, Card, ListItem, Button, Icon } from "react-native-elements";
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class homeScreen extends Component {
   state = {
     search: ""
+  };
+
+  static navigationOptions = {
+    header: null
   };
 
   render() {
@@ -21,16 +25,20 @@ class homeScreen extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-        <SearchBar
-          lightTheme
-          round
-          searchIcon={{ size: 24 }}
-          //onChangeText={someMethod}
-          //onClear={someMethod}
-          placeholder="Search"
-        />
-        <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView" >
-          <Card title="Brewery News" titleStyle={{ fontSize: 20 }}>
+          <SearchBar
+            darkTheme 
+            round
+            searchIcon={{ size: 24 }}
+            //onChangeText={someMethod}
+            //onClear={someMethod}
+            placeholder="Search"
+          />
+        <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView">
+          <Card
+            title="Brewery News"
+            titleStyle={{ fontSize: 20 }}
+            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
+          >
             <View
               style={{
                 flexDirection: "row",
@@ -38,7 +46,10 @@ class homeScreen extends Component {
                 justifyContent: "center"
               }}
             >
-              <Card title="Brewery A" containerStyle={{ width: 250 }}>
+              <Card
+                title="Brewery A"
+                containerStyle={{ width: 250, backgroundColor: "#d3d3d3", opacity: 0.7  }}
+              >
                 <View>
                   <Text>
                     The Hefeweizen over a power drill drink ruminates, and a
@@ -55,7 +66,11 @@ class homeScreen extends Component {
               </Card>
             </View>
           </Card>
-          <Card title="Saved Breweries" titleStyle={{ fontSize: 20 }}>
+          <Card
+            title="Saved Breweries"
+            titleStyle={{ fontSize: 20 }}
+            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
+          >
             <View>
               <View
                 style={{
@@ -76,7 +91,7 @@ class homeScreen extends Component {
                   title="Profile"
                   onPress={() => this.props.navigation.navigate("Profile")}
                   buttonStyle={{
-                    backgroundColor: "blue",
+                    backgroundColor: "black",
                     width: 60,
                     height: 30,
                     borderColor: "transparent",
@@ -91,7 +106,7 @@ class homeScreen extends Component {
                 <Button
                   title="Remove"
                   buttonStyle={{
-                    backgroundColor: "blue",
+                    backgroundColor: "black",
                     width: 60,
                     height: 30,
                     borderColor: "transparent",
@@ -119,5 +134,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%"
+  },
+
+  searchStyle: {
+    marginTop: "25%"
   }
 });
