@@ -3,16 +3,26 @@ import { Image, StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'rea
 import { FileSystem, FaceDetector, MediaLibrary, Permissions } from 'expo';
 import { MaterialIcons } from '@expo/vector-icons';
 import Photo from './Photo';
+import {ImagePicker} from "expo";
+require ("dotenv").config();
 
 const PHOTOS_DIR = FileSystem.documentDirectory + 'photos';
 
+const config = {
+  bucketName: "spentgrains1",
+  region: "us-east-1",
+  accessKeyID: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY
+}
+
+
 export default class GalleryScreen extends React.Component {
   state = {
-    faces: {},
     images: {},
     photos: [],
     selected: [],
   };
+
 
   componentDidMount = async () => {
     const photos = await FileSystem.readDirectoryAsync(PHOTOS_DIR);
@@ -28,6 +38,7 @@ export default class GalleryScreen extends React.Component {
     }
     this.setState({ selected });
   };
+
 
   saveToGallery = async () => {
     const photos = this.state.selected;
