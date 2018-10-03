@@ -70,7 +70,8 @@ class loginScreen extends Component {
               style={styles.overlayContainer}
               containerStyle={{
                 backgroundColor: "#d3d3d3",
-                opacity: 0.7
+                opacity: 0.7,
+                marginBottom: 300
               }}
               isVisible={this.state.isVisible}
             >
