@@ -28,6 +28,7 @@ const options = {
   successActionStatus: 201,
   accessKey: "",
   secretKey: ""
+
 };
 
 export default class GalleryScreen extends React.Component {
