@@ -25,8 +25,6 @@ const file = {
 const options = {
   bucket: "spentgrains1",
   region: "us-east-1",
-  accessKey: "AKIAJSHKMBNR5S2Z542Q",
-  secretKey: "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",
   successActionStatus: 201
 };
 
