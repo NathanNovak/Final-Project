@@ -83,7 +83,9 @@ class profileScreen extends Component {
               alignItems: "stretch",
               justifyContent: "center",
               marginLeft: 0,
-              marginRight:0}}
+              marginRight:0,
+             backgroundColor: "#d3d3d3", 
+             opacity: 0.7 }}
           >
             <Text>Email:</Text>
             <Text>Password:</Text>
@@ -117,6 +119,17 @@ class profileScreen extends Component {
             </Modal>
             {images}
           </ScrollView>
+          <Button
+              title="TAKE A PHOTO"
+              onPress={() => this.props.navigation.navigate("Camera")}
+              buttonStyle={{
+                backgroundColor: "black",
+                borderRadius: 5,
+                width: 200,
+                alignSelf: "center",
+                margin: 5,
+              }}
+            />
         </KeyboardAwareScrollView>
       </ImageBackground>
     );
@@ -141,7 +154,7 @@ const styles = StyleSheet.create({
     padding: 2,
     height: Dimensions.get("window").height / 3 - 12,
     width: Dimensions.get("window").width / 2 - 4,
-    backgroundColor: "#fff"
+    backgroundColor: "#d3d3d3"
   },
   modal: {
     flex: 1,

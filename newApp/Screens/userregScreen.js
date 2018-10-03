@@ -9,7 +9,7 @@ import {
   Alert
 } from "react-native";
 import PasswordInputText from "react-native-hide-show-password-input";
-import { Input, Button, Overlay } from "react-native-elements";
+import { Input, Button, Overlay, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 class userregScreen extends Component {
@@ -44,33 +44,39 @@ class userregScreen extends Component {
           <View style={styles.top}>
             <Text style={styles.header}>S P E N T G R A I N S</Text>
           </View>
-          <Overlay isVisible={this.state.isVisible}>
+          <Card isVisible={this.state.isVisible} 
+          containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}>
           <Input
               placeholder="Enter First Name"
+              placeholderTextColor="black"
               keyboardType="default"
               value={this.state.fname}
               onChangeText={fname => this.setState({fname})}
             />
             <Input
               placeholder="Enter Last Name"
+              placeholderTextColor="black"
               keyboardType="default"
               value={this.state.lname}
               onChangeText={lname => this.setState({lname})}
             />
           <Input
               placeholder="Enter Phonenumber"
+              placeholderTextColor="black"
               keyboardType="numbers-and-punctuation"
               value={this.state.phonenumber}
               onChangeText={phonenumber => this.setState({ phonenumber })}
           />
             <Input
               placeholder="Enter Email "
+              placeholderTextColor="black"
               keyboardType="email-address"
               value={this.state.emailaddress}
               onChangeText={emailaddress => this.setState({ emailaddress })}
             />
             <PasswordInputText
               placeholder="Create Password"
+              placeholderTextColor="black"
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />
@@ -79,13 +85,14 @@ class userregScreen extends Component {
               // onPress={() => this.props.navigation.navigate("Profile")}
               onPress = {this.handleClick}
               buttonStyle={{
+                backgroundColor: "black",
                 borderRadius: 5,
                 width: 200,
                 alignSelf: "center",
-                margin: 5
+                margin: 5,
               }}
             />
-          </Overlay>
+          </Card>
         </View>
       </ImageBackground>
     );

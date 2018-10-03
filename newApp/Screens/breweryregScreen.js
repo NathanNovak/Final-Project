@@ -140,10 +140,11 @@ class loginScreen extends Component {
                 title="GO TO PROFILE"
                 onPress={() => this.props.navigation.navigate("Profile")}
                 buttonStyle={{
+                  backgroundColor: "black",
                   borderRadius: 5,
                   width: 200,
                   alignSelf: "center",
-                  margin: 5
+                  margin: 5,
                 }}
               />
             </Card>
