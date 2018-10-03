@@ -23,6 +23,7 @@
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "express": "^4.16.3",
+    "fetch": "^1.1.0",
     "mysql2": "^1.6.1",
     "path": "^0.12.7",
     "sequelize": "^4.38.1"
