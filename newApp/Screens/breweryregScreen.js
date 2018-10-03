@@ -50,6 +50,22 @@ class loginScreen extends Component {
     }, 100);
   }
 
+  handleClick = user => {
+    // event.preventDefault
+    // console.log("Test", user)
+    API.saveBrewer({
+      breweryname: this.state.breweryname,
+      streetaddress: this.state.streetaddress,
+      city: this.state.city,
+      state: this.state.st,
+      zipcode: this.state.zipcode,
+      emailaddress: this.state.emailaddress,
+      phonenumber: this.state.phonenumber,
+      password: this.state.password,
+      hours: this.state.hours, 
+    })
+  }
+
   render() {
     return (
       <ImageBackground
@@ -138,13 +154,14 @@ class loginScreen extends Component {
               />
               <Button
                 title="GO TO PROFILE"
-                onPress={() => this.props.navigation.navigate("Profile")}
+                // onPress={() => this.props.navigation.navigate("Profile")}
+                onPress= {this.handleClick}
                 buttonStyle={{
                   backgroundColor: "black",
                   borderRadius: 5,
                   width: 200,
                   alignSelf: "center",
-                  margin: 5,
+                  margin: 5,                 
                 }}
               />
             </Card>

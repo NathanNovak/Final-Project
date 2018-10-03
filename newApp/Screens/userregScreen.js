@@ -27,11 +27,11 @@ class userregScreen extends Component {
     // event.preventDefault
     // console.log("Test", user)
     API.saveUser({
-      fname: user.fname,
-      lname: user.lname,
-      emailaddress: user.emailaddress,
-      password: user.password,
-      phonenumber: user.phonenumber
+      fname: this.state.fname,
+      lname: this.state.lname,
+      emailaddress: this.state.emailaddress,
+      password: this.state.password,
+      phonenumber: this.state.phonenumber
     })
   }
 
