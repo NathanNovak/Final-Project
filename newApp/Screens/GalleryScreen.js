@@ -25,11 +25,15 @@ const file = {
 const options = {
   bucket: "spentgrains1",
   region: "us-east-1",
-  successActionStatus: 201
+  successActionStatus: 201,
+  accessKey: "",
+  secretKey: ""
+
 };
 
 export default class GalleryScreen extends React.Component {
   state = {
+    faces: {},
     images: {},
     photos: [],
     selected: []

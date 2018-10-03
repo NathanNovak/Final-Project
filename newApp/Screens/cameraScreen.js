@@ -19,6 +19,7 @@ import {
   Octicons
 } from "@expo/vector-icons";
 
+
 const landmarkSize = 2;
 
 const flashModeOrder = {
@@ -68,6 +69,7 @@ export default class cameraScreen extends React.Component {
     ratios: [],
     newPhotos: false,
     permissionsGranted: false,
+    photos: [],
     pictureSize: undefined,
     pictureSizes: [],
     pictureSizeId: 0,
@@ -130,6 +132,7 @@ export default class cameraScreen extends React.Component {
       this.camera.takePictureAsync({ onPictureSaved: this.onPictureSaved });
     }
   };
+
 
   handleMountError = ({ message }) => console.error(message);
 
@@ -224,7 +227,6 @@ export default class cameraScreen extends React.Component {
 
   renderBottomBar = () => (
     <View style={styles.bottomBar}>
-      <Slider />
       <View style={{ flex: 0.4 }}>
         <TouchableOpacity
           onPress={this.takePicture}
