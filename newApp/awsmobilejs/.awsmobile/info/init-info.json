@@ -1,0 +1,61 @@
+{
+	"projectPath": "C:\\Users\\Matt\\Bootcamp\\Final-Project\\newApp",
+	"projectInfo": {
+		"ProjectName": "newApp",
+		"ProjectPath": "C:\\Users\\Matt\\Bootcamp\\Final-Project\\newApp",
+		"InitializationTime": "",
+		"LastConfigurationTime": "",
+		"LastNPMInstallTime": "",
+		"FrontendLastBuildTime": "",
+		"LastPublishTime": "",
+		"BackendLastSyncTime": "",
+		"BackendLastBuildTime": "",
+		"BackendLastPushTime": "",
+		"BackendProjectID": "",
+		"BackendProjectName": "",
+		"BackendProjectConsoleUrl": "",
+		"BackendProjectCreationTime": "",
+		"BackendProjectLastUpdatedTime": "",
+		"Framework": "react-native"
+	},
+	"packageJson": {
+		"name": "empty-project-template",
+		"main": "node_modules/expo/AppEntry.js",
+		"private": true,
+		"scripts": {
+			"start": "expo start",
+			"android": "expo start --android",
+			"ios": "expo start --ios",
+			"eject": "expo eject",
+			"test": "node ./node_modules/jest/bin/jest.js --watchAll"
+		},
+		"jest": {
+			"preset": "jest-expo"
+		},
+		"dependencies": {
+			"@expo/samples": "2.1.1",
+			"dotenv": "^6.0.0",
+			"expo": "^30.0.1",
+			"fs": "0.0.1-security",
+			"react": "16.3.1",
+			"react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+			"react-native-aws3": "0.0.8",
+			"react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
+			"react-native-elements": "^1.0.0-beta5",
+			"react-native-hide-show-password-input": "^1.0.7",
+			"react-native-image-view": "^2.0.11",
+			"react-native-photo-gallery": "^0.1.10",
+			"react-native-photo-view": "^1.5.2",
+			"react-native-pinch-zoom-view": "^0.2.0",
+			"react-navigation": "^2.16.0",
+			"react-s3": "^1.3.1",
+			"whatwg-fetch": "^2.0.4"
+		},
+		"devDependencies": {
+			"jest-expo": "30.0.0"
+		}
+	},
+	"framework": "react-native",
+	"initialStage": "clean-slate",
+	"strategy": "create"
+}

@@ -11,6 +11,7 @@ import {
 import PasswordInputText from "react-native-hide-show-password-input";
 import { Input, Button, Overlay, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import RF from "react-native-responsive-fontsize";
 
 class loginScreen extends Component {
   state = {
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "black",
     padding: 20,
-    fontSize: 28,
+    fontSize: RF(4),
     borderColor: "black",
     borderWidth: 2,
     height: "15%",

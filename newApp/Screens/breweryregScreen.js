@@ -6,11 +6,16 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Alert
+  Alert,
+  ScrollView,
+  Dimensions,
+  findNodeHandle
 } from "react-native";
 import PasswordInputText from "react-native-hide-show-password-input";
 import { Input, Button, Overlay, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import RF from "react-native-responsive-fontsize";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 class loginScreen extends Component {
   state = {
@@ -22,6 +27,28 @@ class loginScreen extends Component {
   static navigationOptions = {
     header: null
   };
+
+  onInputFocus(refName) {
+    setTimeout(() => {
+      let scrollResponder = this.refs.scrollView.getScrollResponder();
+      scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
+        findNodeHandle(this.refs[refName]),
+        20, // additionalOffset
+        true
+      );
+    }, 100);
+  }
+
+  resetWindowHeight() {
+    let scrollView = this.refs.scrollView;
+    let screenHeight = Dimensions.get("window").height;
+    setTimeout(() => {
+      RCTUIManager.measure(scrollView.getInnerViewNode(), (...data) => {
+        // data[3] is the height of the ScrollView component with content.
+        scrollView.scrollTo({ y: data[3] - screenHeight, animated: true });
+      });
+    }, 100);
+  }
 
   render() {
     return (
@@ -36,85 +63,91 @@ class loginScreen extends Component {
           >
             S P E N T G R A I N S
           </Text>
-
-          <Card
-            style={styles.overlayContainer}
-            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
-            isVisible={this.state.isVisible}
-          >
-            <Input
-              placeholder="Enter Brewery Name"
-              placeholderTextColor="black"
-              keyboardType="default"
-              value={this.state.breweryname}
-              onChangeText={breweryname => this.setState({ breweryname })}
-            />
-            <Input
-              placeholder="Enter Street Address"
-              placeholderTextColor="black"
-              keyboardType="default"
-              value={this.state.streetaddress}
-              onChangeText={streetaddress => this.setState({ streetaddress })}
-            />
-            <Input
-              placeholder="Enter City"
-              placeholderTextColor="black"
-              keyboardType="default"
-              value={this.state.city}
-              onChangeText={city => this.setState({ city })}
-            />
-            <Input
-              placeholder="Enter State"
-              placeholderTextColor="black"
-              keyboardType="default"
-              value={this.state.st}
-              onChangeText={st => this.setState({ st })}
-            />
-            <Input
-              placeholder="Enter Zipcode"
-              placeholderTextColor="black"
-              keyboardType="numeric"
-              value={this.state.zipcode}
-              onChangeText={zipcode => this.setState({ zipcode })}
-            />
-            <Input
-              placeholder="Enter Phonenumber"
-              placeholderTextColor="black"
-              keyboardType="numbers-and-punctuation"
-              value={this.state.phonenumber}
-              onChangeText={phonenumber => this.setState({ phonenumber })}
-            />
-            <Input
-              placeholder="Enter Hours of Operation"
-              placeholderTextColor="black"
-              keyboardType="numbers-and-punctuation"
-              value={this.state.hours}
-              onChangeText={hours => this.setState({ hours })}
-            />
-            <Input
-              placeholder="Enter Email "
-              placeholderTextColor="black"
-              keyboardType="email-address"
-              value={this.state.emailaddress}
-              onChangeText={emailaddress => this.setState({ emailaddress })}
-            />
-            <PasswordInputText
-              placeholder="Password"
-              placeholderTextColor="black"
-              value={this.state.password}
-              onChangeText={password => this.setState({ password })}
-            />
-            <Button
-              title="GO TO PROFILE"
-              onPress={() => this.props.navigation.navigate("Profile")}
-              buttonStyle={{
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5
+          <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView" style={{
+            marginBottom: "20%"
+          }}>
+            <Card
+              style={styles.overlayContainer}
+              containerStyle={{
+                backgroundColor: "#d3d3d3",
+                opacity: 0.7
               }}
-            />
-          </Card>
+              isVisible={this.state.isVisible}
+            >
+              <Input
+                placeholder="Enter Brewery Name"
+                placeholderTextColor="black"
+                keyboardType="default"
+                value={this.state.breweryname}
+                onChangeText={breweryname => this.setState({ breweryname })}
+              />
+              <Input
+                placeholder="Enter Street Address"
+                placeholderTextColor="black"
+                keyboardType="default"
+                value={this.state.streetaddress}
+                onChangeText={streetaddress => this.setState({ streetaddress })}
+              />
+              <Input
+                placeholder="Enter City"
+                placeholderTextColor="black"
+                keyboardType="default"
+                value={this.state.city}
+                onChangeText={city => this.setState({ city })}
+              />
+              <Input
+                placeholder="Enter State"
+                placeholderTextColor="black"
+                keyboardType="default"
+                value={this.state.st}
+                onChangeText={st => this.setState({ st })}
+              />
+              <Input
+                placeholder="Enter Zipcode"
+                placeholderTextColor="black"
+                keyboardType="numeric"
+                value={this.state.zipcode}
+                onChangeText={zipcode => this.setState({ zipcode })}
+              />
+              <Input
+                placeholder="Enter Phonenumber"
+                placeholderTextColor="black"
+                keyboardType="numbers-and-punctuation"
+                value={this.state.phonenumber}
+                onChangeText={phonenumber => this.setState({ phonenumber })}
+              />
+              <Input
+                placeholder="Enter Hours of Operation"
+                placeholderTextColor="black"
+                keyboardType="numbers-and-punctuation"
+                value={this.state.hours}
+                onChangeText={hours => this.setState({ hours })}
+              />
+              <Input
+                placeholder="Enter Email "
+                placeholderTextColor="black"
+                keyboardType="email-address"
+                value={this.state.emailaddress}
+                onChangeText={emailaddress => this.setState({ emailaddress })}
+              />
+              <PasswordInputText
+                placeholder="Password"
+                placeholderTextColor="black"
+                value={this.state.password}
+                onChangeText={password => this.setState({ password })}
+              />
+              <Button
+                title="GO TO PROFILE"
+                onPress={() => this.props.navigation.navigate("Profile")}
+                buttonStyle={{
+                  borderRadius: 5,
+                  width: 200,
+                  alignSelf: "center",
+                  margin: 5
+                }}
+              />
+            </Card>
+          </KeyboardAwareScrollView>
         </View>
       </ImageBackground>
     );
@@ -133,7 +166,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "black",
     padding: 20,
-    fontSize: 28,
+    fontSize: RF(4),
     borderColor: "black",
     borderWidth: 2,
     height: "15%",
@@ -149,7 +182,8 @@ const styles = StyleSheet.create({
     color: "black",
     alignItems: "center",
     height: "50%",
-    backgroundColor: "#d3d3d3"
+    backgroundColor: "#d3d3d3",
+    marginBottom: "20%"
   },
   inputStyle: {}
 });

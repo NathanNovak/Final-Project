@@ -8,6 +8,7 @@ import {
   ScrollView
 } from "react-native";
 import { SearchBar, Card, ListItem, Button, Icon } from "react-native-elements";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 class homeScreen extends Component {
   state = {
@@ -28,7 +29,7 @@ class homeScreen extends Component {
           //onClear={someMethod}
           placeholder="Search"
         />
-        <ScrollView>
+        <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView" >
           <Card title="Brewery News" titleStyle={{ fontSize: 20 }}>
             <View
               style={{
@@ -105,7 +106,7 @@ class homeScreen extends Component {
               </View>
             </View>
           </Card>
-        </ScrollView>
+        </KeyboardAwareScrollView>
       </ImageBackground>
     );
   }

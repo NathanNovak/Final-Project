@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { Avatar, Card, Button, Icon } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 class profileScreen extends Component {
   state = {
@@ -70,7 +71,7 @@ class profileScreen extends Component {
             activeOpacity={0.7}
           />
         </View>
-        <ScrollView
+        <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView" 
           style={{
             flex: 4
           }}
@@ -116,7 +117,7 @@ class profileScreen extends Component {
             </Modal>
             {images}
           </ScrollView>
-        </ScrollView>
+        </KeyboardAwareScrollView>
       </ImageBackground>
     );
   }
