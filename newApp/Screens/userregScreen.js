@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 import {
   Platform,
   StatusBar,
@@ -26,11 +27,11 @@ class userregScreen extends Component {
     // event.preventDefault
     // console.log("Test", user)
     API.saveUser({
-      fname: "Nathan",
-      lname: "Novak",
-      emailaddress: "n@n.com",
-      password: "123546",
-      phonenumber: "1234536789"
+      fname: user.fname,
+      lname: user.lname,
+      emailaddress: user.emailaddress,
+      password: user.password,
+      phonenumber: user.phonenumber
     })
   }
 
