@@ -13,7 +13,8 @@ import {
 } from "react-native";
 import { Avatar, Card, Button, Icon } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import NavBar from "../components/NavBar";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class profileScreen extends Component {
   state = {
@@ -27,6 +28,10 @@ class profileScreen extends Component {
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
     ]
+  };
+
+  static navigationOptions = {
+    header: null
   };
 
   setModalVisible(visible, imageKey) {
@@ -55,6 +60,7 @@ class profileScreen extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
+        <NavBar />
         <View
           style={{
             flexDirection: "row",
@@ -71,7 +77,9 @@ class profileScreen extends Component {
             activeOpacity={0.7}
           />
         </View>
-        <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView" 
+        <KeyboardAwareScrollView
+          keyboardDismissMode="on-drag"
+          ref="scrollView"
           style={{
             flex: 4
           }}
@@ -83,9 +91,10 @@ class profileScreen extends Component {
               alignItems: "stretch",
               justifyContent: "center",
               marginLeft: 0,
-              marginRight:0,
-             backgroundColor: "#d3d3d3", 
-             opacity: 0.7 }}
+              marginRight: 0,
+              backgroundColor: "#d3d3d3",
+              opacity: 0.7
+            }}
           >
             <Text>Email:</Text>
             <Text>Password:</Text>
@@ -120,16 +129,16 @@ class profileScreen extends Component {
             {images}
           </ScrollView>
           <Button
-              title="TAKE A PHOTO"
-              onPress={() => this.props.navigation.navigate("Camera")}
-              buttonStyle={{
-                backgroundColor: "black",
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5,
-              }}
-            />
+            title="TAKE A PHOTO"
+            onPress={() => this.props.navigation.navigate("Camera")}
+            buttonStyle={{
+              backgroundColor: "black",
+              borderRadius: 5,
+              width: 200,
+              alignSelf: "center",
+              margin: 5
+            }}
+          />
         </KeyboardAwareScrollView>
       </ImageBackground>
     );
