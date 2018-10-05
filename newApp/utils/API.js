@@ -38,4 +38,20 @@ export default {
 			.catch(err => console.log("Error", err))
 	},
 
-}
+	authenticate: function(user) {
+		console.log("API User", user);	
+
+		fetch(url + "/users/login",{
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user)
+		})
+		.then(
+			res => console.log("AAHHHH", res)
+		)
+		.catch(err => console.log(err));
+	}
+}	

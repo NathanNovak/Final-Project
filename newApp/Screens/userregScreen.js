@@ -23,7 +23,7 @@ class userregScreen extends Component {
     phonenumber: "",
   };
 
-  handleClick = user => {
+  handleClick = () => {
     // event.preventDefault
     // console.log("Test", user)
     API.saveUser({

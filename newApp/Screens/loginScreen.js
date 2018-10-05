@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 import {
   Platform,
   StatusBar,
@@ -23,6 +24,15 @@ class loginScreen extends Component {
   static navigationOptions = {
     header: null
   };
+
+handleClick = (event, user) => {
+  event.preventDefault();
+ user = this.state
+ console.log("TEST", user);
+
+API.authenticate (user) 
+
+}
 
   render() {
     return (
@@ -67,8 +77,22 @@ class loginScreen extends Component {
                 margin: 5,
               }}
               icon={<Icon name="sign-in" size={15} color="white" />}
-              title="LOG IN"
+              title="Home"
               onPress={() => this.props.navigation.navigate("Home")}
+              // onPress= {this.handleLogin}
+            />
+            <Button
+              buttonStyle={{
+                backgroundColor: "black",
+                borderRadius: 5,
+                width: 200,
+                alignSelf: "center",
+                margin: 5,
+              }}
+              icon={<Icon name="sign-in" size={15} color="white" />}
+              title="LOG IN"
+              // onPress={() => this.props.navigation.navigate("Home")}
+              onPress= {this.handleClick}
             />
             <Button
               buttonStyle={{
