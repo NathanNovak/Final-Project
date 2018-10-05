@@ -30,7 +30,8 @@ handleClick = (event, user) => {
  user = this.state
  console.log("TEST", user);
 
-API.authenticate (user) 
+API.authenticate(user)
+
 
 }
 
@@ -68,19 +69,8 @@ API.authenticate (user)
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />
-            <Button
-              buttonStyle={{
-                backgroundColor: "black",
-                borderRadius: 5,
-                width: 200,
-                alignSelf: "center",
-                margin: 5,
-              }}
-              icon={<Icon name="sign-in" size={15} color="white" />}
-              title="Home"
-              onPress={() => this.props.navigation.navigate("Home")}
-              // onPress= {this.handleLogin}
-            />
+        
+        
             <Button
               buttonStyle={{
                 backgroundColor: "black",

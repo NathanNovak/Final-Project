@@ -2,7 +2,8 @@
 // import fetch from 'fetch';
 // import {start} from 'repl';
 
-const url = "https://calm-peak-17945.herokuapp.com"
+const url = "https://peaceful-dusk-39687.herokuapp.com"
+
 
 export default {
 
@@ -41,7 +42,7 @@ export default {
 	authenticate: function(user) {
 		console.log("API User", user);	
 
-		fetch(url + "/users/login",{
+		fetch(url + "/api/users/login",{
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -50,8 +51,10 @@ export default {
 			body: JSON.stringify(user)
 		})
 		.then(
-			res => console.log("AAHHHH", res)
-		)
+			res => res.json())
+		.then(jsonresponse=>{
+			console.log(jsonresponse)
+		})
 		.catch(err => console.log(err));
 	}
 }	
