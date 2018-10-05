@@ -11,6 +11,14 @@ import cameraScreen from "./Screens/cameraScreen";
 
 
 export default class App extends React.Component {
+  state = {
+    isLoggedIn: false,
+  }
+
+  static navigationOptions = {
+    header: null
+  };
+
   render(){
     return(
      <AppStackNavigator />

@@ -7,17 +7,27 @@ import {
   Text,
   ScrollView
 } from "react-native";
-import { SearchBar, Card, ListItem, Button, Icon } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { SearchBar, Card, ListItem, Button } from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { createStackNavigator } from 'react-navigation';
 
 class homeScreen extends Component {
   state = {
-    search: ""
+    search: "",
+    brewers: [
+      "Crooked Tooth",
+      "Pueblo Vida",
+      "Button Brew House",
+      "1055 Brewery and Sausage House",
+      "Dragoon"
+    ]
   };
 
   static navigationOptions = {
     header: null
   };
+
 
   render() {
     return (
@@ -25,14 +35,29 @@ class homeScreen extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-          <SearchBar
-            darkTheme 
-            round
-            searchIcon={{ size: 24 }}
-            //onChangeText={someMethod}
-            //onClear={someMethod}
-            placeholder="Search"
+        <View style={styles.buttons}>
+          <Button
+            style={styles.button}
+            icon={<Icon name="eye-slash" size={30} color="white" />}
+            title="LOG OUT"
+            // onPress={() => this.props.navigation.navigate("Home")}
+            //onPress={this.handleClick}
           />
+          <Button
+            style={styles.button}
+            icon={<Icon name="user" size={30} color="white" />}
+            title="USER"
+            // onPress={() => this.props.navigation.navigate("Home")}
+            //onPress={this.handleClick}
+          />
+          <Button
+            style={styles.button}
+            icon={<Icon name="beer" size={30} color="white" />}
+            title="BREWERIES"
+            // onPress={() => this.props.navigation.navigate("Home")}
+            //onPress={this.handleClick}
+          />
+        </View>
         <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView">
           <Card
             title="Brewery News"
@@ -48,7 +73,11 @@ class homeScreen extends Component {
             >
               <Card
                 title="Brewery A"
-                containerStyle={{ width: 250, backgroundColor: "#d3d3d3", opacity: 0.7  }}
+                containerStyle={{
+                  width: 250,
+                  backgroundColor: "#d3d3d3",
+                  opacity: 0.7
+                }}
               >
                 <View>
                   <Text>
@@ -135,8 +164,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%"
   },
-
-  searchStyle: {
-    marginTop: "25%"
+  buttons: {
+    flexDirection: "row",
+    alignItems: "stretch",
+    justifyContent: "center",
+    marginTop: 50
+  },
+  button: {
+    backgroundColor: "blue",
+    borderRadius: 5,
+    padding: 20,
+    alignSelf: "center",
+    margin: 10
   }
 });
