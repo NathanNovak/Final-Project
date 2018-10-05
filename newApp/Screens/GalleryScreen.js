@@ -14,17 +14,16 @@ import { ImagePicker } from "expo";
 import { RNS3 } from "react-native-aws3";
 
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";
-const file = {
+let file = {
   // `uri` can also be a file system path (i.e. file://)
-  uri:
-    "assets-library://asset/asset.PNG?id=655DBE66-8008-459C-9358-914E1FB532DD&ext=PNG",
-  name: "image.png",
-  type: "image/png"
+  uri: "",
+  name: "image.jpg",
+  type: "image/jpg"
 };
 
-const options = {
+let options = {
   bucket: "spentgrains1",
-  region: "us-east-1",
+  region: "us-west-2",
   successActionStatus: 201,
   accessKey: "",
   secretKey: ""
@@ -53,11 +52,14 @@ export default class GalleryScreen extends React.Component {
       allowsEditing: true,
       aspect: [4, 3]
     });
-    console.log(result);
+    file.uri = result.uri;
+    console.log(result, file, options);
     RNS3.put(file, options).then(response => {
       if (response.status !== 201)
         throw new Error("Failed to uploade image to S3");
       console.log(response.body);
+    }).catch(e => {
+      console.log(e)
     });
   };
 
