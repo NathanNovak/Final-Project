@@ -29,27 +29,8 @@ class loginScreen extends Component {
     header: null
   };
 
-  onInputFocus(refName) {
-    setTimeout(() => {
-      let scrollResponder = this.refs.scrollView.getScrollResponder();
-      scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
-        findNodeHandle(this.refs[refName]),
-        20, // additionalOffset
-        true
-      );
-    }, 100);
-  }
 
-  resetWindowHeight() {
-    let scrollView = this.refs.scrollView;
-    let screenHeight = Dimensions.get("window").height;
-    setTimeout(() => {
-      RCTUIManager.measure(scrollView.getInnerViewNode(), (...data) => {
-        // data[3] is the height of the ScrollView component with content.
-        scrollView.scrollTo({ y: data[3] - screenHeight, animated: true });
-      });
-    }, 100);
-  }
+
 
   handleClick = user => {
     // event.preventDefault
@@ -189,7 +170,7 @@ const styles = StyleSheet.create({
     fontSize: RF(4),
     borderColor: "black",
     borderWidth: 2,
-    height: "15%",
+    height: "10%",
     alignItems: "center",
     justifyContent: "center",
     marginTop: "20%",
