@@ -11,9 +11,9 @@ import {
   TouchableWithoutFeedback,
   Modal
 } from "react-native";
-import { Avatar, Card, Button, Icon } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Avatar, Card, Button, Header } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
-import NavBar from "../components/NavBar";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class profileScreen extends Component {
@@ -60,7 +60,12 @@ class profileScreen extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-        <NavBar />
+        <Header
+          outerContainerStyles={{ backgroundColor: "#d3d3d3", height: 75, paddingTop: 15, opacity: 0.7}}
+          leftComponent={<Icon name="close" size={30} color="black" />}
+          centerComponent={<Icon name="beer" size={30} color="black" />}
+          rightComponent={<Icon name="home" size={30} color="black" />}
+        />
         <View
           style={{
             flexDirection: "row",
@@ -172,5 +177,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black"
+  },
+  header: {
+    backgroundColor: "#d3d3d3"
   }
 });

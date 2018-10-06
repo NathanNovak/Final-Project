@@ -8,9 +8,9 @@ import {
   ScrollView
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { SearchBar, Card, ListItem, Button } from "react-native-elements";
+import { SearchBar, Card, ListItem, Button, Header } from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from "react-navigation";
 
 class homeScreen extends Component {
   state = {
@@ -28,36 +28,23 @@ class homeScreen extends Component {
     header: null
   };
 
-
   render() {
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-        <View style={styles.buttons}>
-          <Button
-            style={styles.button}
-            icon={<Icon name="eye-slash" size={30} color="white" />}
-            title="LOG OUT"
-            // onPress={() => this.props.navigation.navigate("Home")}
-            //onPress={this.handleClick}
-          />
-          <Button
-            style={styles.button}
-            icon={<Icon name="user" size={30} color="white" />}
-            title="USER"
-            // onPress={() => this.props.navigation.navigate("Home")}
-            //onPress={this.handleClick}
-          />
-          <Button
-            style={styles.button}
-            icon={<Icon name="beer" size={30} color="white" />}
-            title="BREWERIES"
-            // onPress={() => this.props.navigation.navigate("Home")}
-            //onPress={this.handleClick}
-          />
-        </View>
+        <Header
+          outerContainerStyles={{
+            backgroundColor: "#d3d3d3",
+            height: 75,
+            paddingTop: 15,
+            opacity: 0.7
+          }}
+          leftComponent={<Icon name="close" size={30} color="black" />}
+          centerComponent={<Icon name="beer" size={30} color="black" />}
+          rightComponent={<Icon name="home" size={30} color="black" />}
+        />
         <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView">
           <Card
             title="Brewery News"
