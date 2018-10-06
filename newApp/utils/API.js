@@ -39,6 +39,22 @@ export default {
 			.catch(err => console.log("Error", err))
 	},
 
+	saveFavBrewer: function (Favbrewer) {
+		console.log("Fav Brewer Saved", Favbrewer);
+		
+			fetch(url + "/api/users/favbrewery",{
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(Favbrewer)
+			})
+			.then(response => 
+			console.log("Fetch Response", response))
+			.catch(err => console.log("Error", err))
+	},
+
 	authenticate: function(user) {
 		console.log("API User", user);	
 
