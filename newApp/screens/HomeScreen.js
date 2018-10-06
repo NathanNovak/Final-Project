@@ -5,10 +5,19 @@ import {
   ImageBackground,
   Image,
   Text,
-  ScrollView
+  ScrollView,
+  Modal,
+  TouchableOpacity,
+  Alert
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { SearchBar, Card, ListItem, Button, Header } from "react-native-elements";
+import {
+  SearchBar,
+  Card,
+  ListItem,
+  Button,
+  Header
+} from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { createStackNavigator } from "react-navigation";
 
@@ -21,12 +30,17 @@ class homeScreen extends Component {
       "Button Brew House",
       "1055 Brewery and Sausage House",
       "Dragoon"
-    ]
+    ],
+    modalVisible: false
   };
 
   static navigationOptions = {
     header: null
   };
+
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
+  }
 
   render() {
     return (
@@ -41,14 +55,31 @@ class homeScreen extends Component {
             paddingTop: 15,
             opacity: 0.7
           }}
-          leftComponent={<Icon name="close" size={30} color="black" />}
-          centerComponent={<Icon name="beer" size={30} color="black" />}
-          rightComponent={<Icon name="home" size={30} color="black" />}
+          leftComponent={
+            <TouchableOpacity>
+              <Icon name="close" size={30} color="black" />
+            </TouchableOpacity>
+          }
+          centerComponent={
+            <TouchableOpacity
+              onPress={() => {
+                this.setModalVisible(true);
+              }}
+            >
+              <Icon name="beer" size={30} color="black" />
+            </TouchableOpacity>
+          }
+          rightComponent={
+            <TouchableOpacity>
+              <Icon name="home" size={30} color="black" />
+            </TouchableOpacity>
+          }
         />
         <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView">
+          <View />
           <Card
             title="Brewery News"
-            titleStyle={{ fontSize: 20 }}
+            titleStyle={{ fontSize: 20, color: "black" }}
             containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
           >
             <View
@@ -60,6 +91,9 @@ class homeScreen extends Component {
             >
               <Card
                 title="Brewery A"
+                titleStyle={{
+                  color: "black"
+                }}
                 containerStyle={{
                   width: 250,
                   backgroundColor: "#d3d3d3",
@@ -67,7 +101,11 @@ class homeScreen extends Component {
                 }}
               >
                 <View>
-                  <Text>
+                  <Text
+                    textStyle={{
+                      color: "black"
+                    }}
+                  >
                     The Hefeweizen over a power drill drink ruminates, and a
                     bullfrog brew near a Corona Extra gets stinking drunk;
                     however, a seldom molten Sierra Nevada teaches a bud light.
@@ -84,8 +122,12 @@ class homeScreen extends Component {
           </Card>
           <Card
             title="Saved Breweries"
-            titleStyle={{ fontSize: 20 }}
-            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
+            titleStyle={{ fontSize: 20, color: "black" }}
+            containerStyle={{
+              backgroundColor: "#d3d3d3",
+              opacity: 0.7,
+              marginBottom: 300
+            }}
           >
             <View>
               <View
