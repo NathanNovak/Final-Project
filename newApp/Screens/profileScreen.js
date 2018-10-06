@@ -61,10 +61,27 @@ class profileScreen extends Component {
         style={styles.container}
       >
         <Header
-          outerContainerStyles={{ backgroundColor: "#d3d3d3", height: 75, paddingTop: 15, opacity: 0.7}}
-          leftComponent={<Icon name="close" size={30} color="black" />}
-          centerComponent={<Icon name="beer" size={30} color="black" />}
-          rightComponent={<Icon name="home" size={30} color="black" />}
+          outerContainerStyles={{
+            backgroundColor: "#d3d3d3",
+            height: 75,
+            paddingTop: 15,
+            opacity: 0.7
+          }}
+          leftComponent={
+            <TouchableOpacity>
+              <Icon name="close" size={30} color="black" />
+            </TouchableOpacity>
+          }
+          centerComponent={
+            <TouchableOpacity>
+              <Icon name="beer" size={30} color="black" />
+            </TouchableOpacity>
+          }
+          rightComponent={
+            <TouchableOpacity>
+              <Icon name="home" size={30} color="black" />
+            </TouchableOpacity>
+          }
         />
         <View
           style={{
