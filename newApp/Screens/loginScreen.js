@@ -26,13 +26,7 @@ class loginScreen extends Component {
     header: null
   };
 
-  handleClick = (event, user) => {
-    event.preventDefault();
-    user = this.state;
-    console.log("TEST", user);
 
-    API.authenticate(user);
-  };
 
   render() {
     return (
@@ -82,8 +76,9 @@ class loginScreen extends Component {
                 }}
                 icon={<Icon name="user" size={30} color="white" />}
                 title="USER LOGIN"
-                onPress={() => this.props.navigation.navigate("Home")}
-                //onPress={this.handleClick}
+                // onPress={() => this.props.navigation.navigate("Home")}
+                onPress={() =>
+                  this.props.screenProps.loginUser(this.state)}
               />
               <Button
                 buttonStyle={{
