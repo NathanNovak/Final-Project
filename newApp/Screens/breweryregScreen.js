@@ -162,7 +162,7 @@ class breweryregScreen extends Component {
   }
 }
 
-export default loginScreen;
+export default breweryregScreen;
 
 const styles = StyleSheet.create({
   container: {
