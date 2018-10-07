@@ -8,20 +8,40 @@ import resultScreen from './Screens/resultScreen';
 import breweryregScreen from './Screens/breweryregScreen';
 import userregScreen from './Screens/userregScreen';
 import cameraScreen from "./Screens/cameraScreen";
+import API from "./utils/API";
 
 
 export default class App extends React.Component {
-  state = {
-    isLoggedIn: false,
-  }
+
 
   static navigationOptions = {
     header: null
   };
 
-  render(){
-    return(
-     <AppStackNavigator />
+  state = {
+    currentUser: []
+  }
+  loginUser = (user, response) => {
+    console.log("TEST", user);
+    API.authenticate(user)
+  .then(res => {console.log("res " + JSON.stringify(res))
+    this.setState({currentUser:res})
+    console.log(this.state.currentUser.loggedIn)
+})
+
+    
+  };
+
+
+
+  render() {
+    return (
+      <AppStackNavigator
+        screenProps={{
+          loginUser: this.loginUser,
+          currentUser: this.state.currentUser
+
+        }} />
     );
   }
 }

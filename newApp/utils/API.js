@@ -9,40 +9,40 @@ export default {
 
 	saveUser: function (user) {
 		console.log("User Saved", user);
-		
-			fetch(url + "/api/users",{
+
+		fetch(url + "/api/users", {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(user)
-			})
-			.then(response => 
-			console.log("Fetch Response", response))
+		})
+			.then(response =>
+				console.log("Fetch Response", response))
 			.catch(err => console.log("Error", err))
 	},
-	
+
 	saveBrewer: function (brewer) {
 		console.log("Brewer Saved", brewer);
-		
-			fetch(url + "/api/brewers",{
+
+		fetch(url + "/api/brewers", {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(brewer)
-			})
-			.then(response => 
-			console.log("Fetch Response", response))
+		})
+			.then(response =>
+				console.log("Fetch Response", response))
 			.catch(err => console.log("Error", err))
 	},
 
-	authenticate: function(user) {
-		console.log("API User", user);	
+	authenticate: function (user) {
+		console.log("API User", user);
 
-		fetch(url + "/api/users/login",{
+	return	fetch(url + "/api/users/login", {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -50,11 +50,12 @@ export default {
 			},
 			body: JSON.stringify(user)
 		})
-		.then(
-			res => res.json())
-		.then(jsonresponse=>{
-			console.log(jsonresponse)
-		})
-		.catch(err => console.log(err));
+			.then(
+				response => response.json()
+			)
+			// .then(jsonresponse=>{
+			// 	console.log(jsonresponse)
+			// })
+			.catch(err => console.log(err));
 	}
 }	
