@@ -22,14 +22,22 @@ export default class App extends React.Component {
     currentUser: []
   }
   loginUser = (user, response) => {
-    console.log("TEST", user);
-    API.authenticate(user)
-  .then(res => {console.log("res " + JSON.stringify(res))
-    this.setState({currentUser:res})
-    console.log(this.state.currentUser.loggedIn)
-})
+   API.authenticate(user)
+      .then(res => {
+        console.log("res " + JSON.stringify(res))
+        this.setState({ currentUser: res })
+        console.log(this.state.currentUser.loggedIn)
+        if (this.state.currentUser.loggedIn) {
+          console.log("logged in?" + this.state.currentUser.loggedIn)
+          navigate('Home')
+        }
+          
+          // {() => this.props.navigation.navigate("Home")}
+        
+        else (Alert.alert("Invalid Username or Password"))
+      })
 
-    
+
   };
 
 
