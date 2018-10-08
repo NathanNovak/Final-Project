@@ -29,7 +29,7 @@ class brewerProfile extends Component {
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
     ],
-    beer: ["IPA", "Hefeweizen", "Pale Ale", "Pilsner"]
+    beers: ["IPA", "Hefeweizen", "Pale Ale", "Pilsner"],
   };
 
   static navigationOptions = {
@@ -128,7 +128,9 @@ class brewerProfile extends Component {
             }}
           >
             <Text>Email:</Text>
-            <Text>Password:</Text>
+            <Text>Phone Number:</Text>
+            <Text>Hours:</Text>
+            <Text>Address:</Text>
             <Text>Description:</Text>
           </Card>
           <Card
