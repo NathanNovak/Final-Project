@@ -12,7 +12,8 @@ import { createStackNavigator } from "react-navigation";
 import loginScreen from "./Screens/loginScreen";
 import homeScreen from "./Screens/HomeScreen";
 import profileScreen from "./Screens/profileScreen";
-import resultScreen from "./Screens/resultScreen";
+import brewerProfile from "./Screens/brewerProfile";
+import brewerList from "./Screens/brewerList";
 import breweryregScreen from "./Screens/breweryregScreen";
 import userregScreen from "./Screens/userregScreen";
 import cameraScreen from "./Screens/cameraScreen";
@@ -22,10 +23,11 @@ const AppStackNavigator = createStackNavigator({
   Login: loginScreen,
   Home: homeScreen,
   Profile: profileScreen,
-  Result: resultScreen,
   BrewReg: breweryregScreen,
   UserReg: userregScreen,
-  Camera: cameraScreen
+  Camera: cameraScreen,
+  Brewer: brewerProfile,
+  Brewers: brewerList
 });
 
 export default class App extends React.Component {
