@@ -72,7 +72,9 @@ class profileScreen extends Component {
           }}
           leftComponent={
             <TouchableOpacity
-            onPress={console.log(this.props.screenProps)}>
+            onPress={() => this.props.navigation.navigate("Login")}
+            // onPress={console.log(this.props.screenProps)}
+            >
               <Icon name="close" size={30} color="black" />
             </TouchableOpacity>
           }
