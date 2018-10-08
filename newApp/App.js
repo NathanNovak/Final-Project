@@ -17,6 +17,7 @@ import brewerList from "./Screens/brewerList";
 import breweryregScreen from "./Screens/breweryregScreen";
 import userregScreen from "./Screens/userregScreen";
 import cameraScreen from "./Screens/cameraScreen";
+import edit from "./Screens/edit";
 import API from "./utils/API";
 
 const AppStackNavigator = createStackNavigator({
@@ -27,7 +28,8 @@ const AppStackNavigator = createStackNavigator({
   UserReg: userregScreen,
   Camera: cameraScreen,
   Brewer: brewerProfile,
-  Brewers: brewerList
+  Brewers: brewerList,
+  Edit: edit
 });
 
 export default class App extends React.Component {

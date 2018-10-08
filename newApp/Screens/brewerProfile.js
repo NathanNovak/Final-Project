@@ -29,7 +29,7 @@ class brewerProfile extends Component {
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
     ],
-    beers: ["IPA", "Hefeweizen", "Pale Ale", "Pilsner"],
+    beers: ["IPA", "Hefeweizen", "Pale Ale", "Pilsner"]
   };
 
   static navigationOptions = {
@@ -128,10 +128,25 @@ class brewerProfile extends Component {
             }}
           >
             <Text>Email: {this.props.screenProps.currentBrewer.email}</Text>
-            <Text>Phone Number: {this.props.screenProps.currentBrewer.phone}</Text>
+            <Text>
+              Phone Number: {this.props.screenProps.currentBrewer.phone}
+            </Text>
             <Text>Hours: {this.props.screenProps.currentBrewer.hours}</Text>
-            <Text>Address: {`${this.props.screenProps.currentBrewer.address} ${this.props.screenProps.currentBrewer.city}, ${this.props.screenProps.currentBrewer.state} ${this.props.screenProps.currentBrewer.zip}`}</Text>
+            <Text>
+              Address:{" "}
+              {`${this.props.screenProps.currentBrewer.address} ${
+                this.props.screenProps.currentBrewer.city
+              }, ${this.props.screenProps.currentBrewer.state} ${
+                this.props.screenProps.currentBrewer.zip
+              }`}
+            </Text>
             <Text>Description:</Text>
+            <TouchableOpacity
+              title="EDIT"
+              onPress={() => this.props.navigation.navigate("Edit")}
+            >
+              <Icon name="pencil" size={30} color="black" />
+            </TouchableOpacity>
           </Card>
           <Card
             title="Beer List"
