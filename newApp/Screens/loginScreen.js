@@ -26,7 +26,7 @@ class loginScreen extends Component {
     header: null
   };
 
-
+ 
 
   render() {
     return (
@@ -76,9 +76,7 @@ class loginScreen extends Component {
                 }}
                 icon={<Icon name="user" size={30} color="white" />}
                 title="USER LOGIN"
-                // onPress={() => this.props.navigation.navigate("Home")}
-                onPress={() =>
-                  this.props.screenProps.loginUser(this.state)}
+                onPress={() => {this.props.screenProps.loginUser(this.state); this.props.navigation.navigate("Home") }}
               />
               <Button
                 buttonStyle={{
@@ -115,6 +113,7 @@ class loginScreen extends Component {
                   zIndex: 1
                 }}
                 title="REGISTER BREWERY"
+                
                 onPress={() => this.props.navigation.navigate("BrewReg")}
               />
             </Card>
