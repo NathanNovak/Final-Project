@@ -9,7 +9,8 @@ import {
   Alert,
   Dimensions,
   TouchableWithoutFeedback,
-  Modal
+  Modal,
+  TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Avatar, Card, Button, Header } from "react-native-elements";
@@ -80,7 +81,9 @@ class profileScreen extends Component {
             </TouchableOpacity>
           }
           rightComponent={
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Profile")}
+            >
               <Icon name="home" size={30} color="black" />
             </TouchableOpacity>
           }
