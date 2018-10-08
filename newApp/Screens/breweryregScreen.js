@@ -18,11 +18,18 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import RF from "react-native-responsive-fontsize";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
-class loginScreen extends Component {
+class breweryregScreen extends Component {
   state = {
     isVisible: true,
-    user: "",
-    password: ""
+    breweryname: "",
+    streetaddress: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    emailaddress: "",
+    phonenumber: "",
+    password: "",
+    hours: "",
   };
 
   static navigationOptions = {
@@ -155,7 +162,7 @@ class loginScreen extends Component {
   }
 }
 
-export default loginScreen;
+export default breweryregScreen;
 
 const styles = StyleSheet.create({
   container: {
