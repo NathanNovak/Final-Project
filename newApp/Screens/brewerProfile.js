@@ -62,7 +62,7 @@ class brewerProfile extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-       <Header
+        <Header
           outerContainerStyles={{
             backgroundColor: "#d3d3d3",
             height: 75,

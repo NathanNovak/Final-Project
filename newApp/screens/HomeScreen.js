@@ -62,15 +62,15 @@ class homeScreen extends Component {
           }
           centerComponent={
             <TouchableOpacity
-              onPress={() => {
-                this.setModalVisible(true);
-              }}
+              onPress={() => this.props.navigation.navigate("Brewers")}
             >
               <Icon name="beer" size={30} color="black" />
             </TouchableOpacity>
           }
           rightComponent={
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Profile")}
+            >
               <Icon name="home" size={30} color="black" />
             </TouchableOpacity>
           }
