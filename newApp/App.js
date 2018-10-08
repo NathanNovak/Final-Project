@@ -18,6 +18,16 @@ import userregScreen from "./Screens/userregScreen";
 import cameraScreen from "./Screens/cameraScreen";
 import API from "./utils/API";
 
+const AppStackNavigator = createStackNavigator({
+  Login: loginScreen,
+  Home: homeScreen,
+  Profile: profileScreen,
+  Result: resultScreen,
+  BrewReg: breweryregScreen,
+  UserReg: userregScreen,
+  Camera: cameraScreen
+});
+
 export default class App extends React.Component {
   static navigationOptions = {
     header: null
@@ -33,6 +43,7 @@ export default class App extends React.Component {
       this.setState({ currentUser: res });
       console.log(this.state.currentUser.loggedIn);
       if (this.state.currentUser.loggedIn) {
+        navigate("home")
         console.log("logged in?" + this.state.currentUser.loggedIn);
       }
 
@@ -52,12 +63,3 @@ export default class App extends React.Component {
     );
   }
 }
-const AppStackNavigator = createStackNavigator({
-  Login: loginScreen,
-  Home: homeScreen,
-  Profile: profileScreen,
-  Result: resultScreen,
-  BrewReg: breweryregScreen,
-  UserReg: userregScreen,
-  Camera: cameraScreen
-});
