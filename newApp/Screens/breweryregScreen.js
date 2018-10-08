@@ -16,7 +16,7 @@ import PasswordInputText from "react-native-hide-show-password-input";
 import { Input, Button, Overlay, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RF from "react-native-responsive-fontsize";
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class breweryregScreen extends Component {
   state = {
@@ -29,19 +29,16 @@ class breweryregScreen extends Component {
     emailaddress: "",
     phonenumber: "",
     password: "",
-    hours: "",
+    hours: ""
   };
 
   static navigationOptions = {
     header: null
   };
 
-
-
-
   handleClick = user => {
     // event.preventDefault
-    // console.log("Test", user)
+    console.log("Test", user);
     API.saveBrewer({
       breweryname: this.state.breweryname,
       streetaddress: this.state.streetaddress,
@@ -51,9 +48,9 @@ class breweryregScreen extends Component {
       emailaddress: this.state.emailaddress,
       phonenumber: this.state.phonenumber,
       password: this.state.password,
-      hours: this.state.hours, 
-    })
-  }
+      hours: this.state.hours
+    });
+  };
 
   render() {
     return (
@@ -68,9 +65,13 @@ class breweryregScreen extends Component {
           >
             S P E N T G R A I N S
           </Text>
-          <KeyboardAwareScrollView keyboardDismissMode="on-drag" ref="scrollView" style={{
-            marginBottom: "20%"
-          }}>
+          <KeyboardAwareScrollView
+            keyboardDismissMode="on-drag"
+            ref="scrollView"
+            style={{
+              marginBottom: "20%"
+            }}
+          >
             <Card
               style={styles.overlayContainer}
               containerStyle={{
@@ -143,15 +144,26 @@ class breweryregScreen extends Component {
                 onChangeText={password => this.setState({ password })}
               />
               <Button
-                title="GO TO PROFILE"
+                title="SAVE BREWER"
                 // onPress={() => this.props.navigation.navigate("Profile")}
-                onPress= {this.handleClick}
+                onPress={this.handleClick}
                 buttonStyle={{
                   backgroundColor: "black",
                   borderRadius: 5,
                   width: 200,
                   alignSelf: "center",
-                  margin: 5,                 
+                  margin: 5
+                }}
+              />
+              <Button
+                title="RETURN TO LOGIN"
+                onPress={() => this.props.navigation.navigate("Login")}
+                buttonStyle={{
+                  backgroundColor: "black",
+                  borderRadius: 5,
+                  width: 200,
+                  alignSelf: "center",
+                  margin: 5
                 }}
               />
             </Card>

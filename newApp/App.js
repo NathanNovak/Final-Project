@@ -39,7 +39,7 @@ export default class App extends React.Component {
     currentUser: [],
     currentBrewer: []
   };
-  
+
   loginUser = (user, response) => {
     API.authenticate(user).then(res => {
       console.log("res " + JSON.stringify(res));
@@ -75,7 +75,7 @@ export default class App extends React.Component {
           loginUser: this.loginUser,
           currentUser: this.state.currentUser,
           loginBrewer: this.loginBrewer,
-          currentBrewer:this.state.currentBrewer
+          currentBrewer: this.state.currentBrewer
         }}
       />
     );

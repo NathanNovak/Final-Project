@@ -113,7 +113,7 @@ class brewerProfile extends Component {
           }}
         >
           <Card
-            title="Brewery Name"
+            title={this.props.screenProps.currentBrewer.BreweryName}
             titleStyle={{
               color: "black"
             }}
@@ -127,10 +127,10 @@ class brewerProfile extends Component {
               opacity: 0.7
             }}
           >
-            <Text>Email:</Text>
-            <Text>Phone Number:</Text>
-            <Text>Hours:</Text>
-            <Text>Address:</Text>
+            <Text>Email: {this.props.screenProps.currentBrewer.email}</Text>
+            <Text>Phone Number: {this.props.screenProps.currentBrewer.phone}</Text>
+            <Text>Hours: {this.props.screenProps.currentBrewer.hours}</Text>
+            <Text>Address: {`${this.props.screenProps.currentBrewer.address} ${this.props.screenProps.currentBrewer.city}, ${this.props.screenProps.currentBrewer.state} ${this.props.screenProps.currentBrewer.zip}`}</Text>
             <Text>Description:</Text>
           </Card>
           <Card
