@@ -36,7 +36,8 @@ export default class App extends React.Component {
   };
 
   state = {
-    currentUser: []
+    currentUser: [],
+    currentBrewer: []
   };
   
   loginUser = (user, response) => {

@@ -43,6 +43,8 @@ class profileScreen extends Component {
   getImage() {
     return this.state.modalImage;
   }
+
+
   render() {
     let images = this.state.images.map((val, key) => {
       return (
@@ -69,7 +71,8 @@ class profileScreen extends Component {
             opacity: 0.7
           }}
           leftComponent={
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={console.log(this.props.screenProps)}>
               <Icon name="close" size={30} color="black" />
             </TouchableOpacity>
           }
@@ -112,7 +115,7 @@ class profileScreen extends Component {
           }}
         >
           <Card
-            title="User Name"
+            title={`${this.props.screenProps.currentUser.firstName} ${this.props.screenProps.currentUser.lastName}`}
             containerStyle={{
               marginBottom: 5,
               alignItems: "stretch",
@@ -123,9 +126,7 @@ class profileScreen extends Component {
               opacity: 0.7
             }}
           >
-            <Text>Email:</Text>
-            <Text>Password:</Text>
-            <Text>Description:</Text>
+            <Text>Email: {this.props.screenProps.currentUser.email}</Text>
           </Card>
           <ScrollView
             horizontal={true}
