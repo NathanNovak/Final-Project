@@ -76,12 +76,7 @@ class loginScreen extends Component {
                 }}
                 icon={<Icon name="user" size={30} color="white" />}
                 title="USER LOGIN"
-
-                onPress={() => this.props.navigation.navigate("Home")}
-                //onPress={() =>
-                  //this.props.screenProps.loginUser(this.state)}
-
-                //onPress={() => {this.props.screenProps.loginUser(this.state); this.props.navigation.navigate("Home") }}
+              onPress={() => {this.props.screenProps.loginUser(this.state); this.props.navigation.navigate("Home") }}
               />
               <Button
                 buttonStyle={{
@@ -104,8 +99,7 @@ class loginScreen extends Component {
                 }}
                 icon={<Icon name="beer" size={30} color="white" />}
                 title="BREWER LOGIN"
-                onPress={() => this.props.navigation.navigate("Home")}
-                //onPress={this.handleClick}
+                onPress={() => {this.props.screenProps.loginBrewer(this.state); this.props.navigation.navigate("Home") }}
               />
 
               <Button
