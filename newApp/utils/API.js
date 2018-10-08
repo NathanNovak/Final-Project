@@ -77,5 +77,14 @@ export default {
 			// 	console.log(jsonresponse)
 			// })
 			.catch(err => console.log(err));
+	},
+
+	loadBrewer: function (){
+		return fetch(url + "/api/brewers")
+			.then((response)=>response.json())
+			.catch(err => console.log(err));
+
+	
+
 	}
 }	
