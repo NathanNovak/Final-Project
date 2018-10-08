@@ -45,8 +45,21 @@ export default class App extends React.Component {
       this.setState({ currentUser: res });
       console.log(this.state.currentUser.loggedIn);
       if (this.state.currentUser.loggedIn) {
-        navigate("home")
         console.log("logged in?" + this.state.currentUser.loggedIn);
+      }
+
+      // {() => this.props.navigation.navigate("Home")}
+      else Alert.alert("Invalid Username or Password");
+    });
+  };
+
+  loginBrewer = (brewer, response) => {
+    API.authenticateBrewer(brewer).then(res => {
+      console.log("res " + JSON.stringify(res));
+      this.setState({ currentBrewer: res });
+      console.log(this.state.currentBrewer.loggedIn);
+      if (this.state.current.currentBrewer.loggedIn) {
+        console.log("logged in?" + this.state.currentBrewer.loggedIn);
       }
 
       // {() => this.props.navigation.navigate("Home")}
@@ -59,7 +72,9 @@ export default class App extends React.Component {
       <AppStackNavigator
         screenProps={{
           loginUser: this.loginUser,
-          currentUser: this.state.currentUser
+          currentUser: this.state.currentUser,
+          loginBrewer: this.loginBrewer,
+          currentBrewer:this.state.currentBrewer
         }}
       />
     );

@@ -57,5 +57,25 @@ export default {
 			// 	console.log(jsonresponse)
 			// })
 			.catch(err => console.log(err));
+	},
+
+	authenticateBrewer: function (brewer) {
+		console.log("API User", brewer);
+
+	return	fetch(url + "/api/brewers/login", {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(brewer)
+		})
+			.then(
+				response => response.json()
+			)
+			// .then(jsonresponse=>{
+			// 	console.log(jsonresponse)
+			// })
+			.catch(err => console.log(err));
 	}
 }	
