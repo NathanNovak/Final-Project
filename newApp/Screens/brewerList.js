@@ -44,7 +44,8 @@ class brewerList extends Component {
             opacity: 0.7
           }}
           leftComponent={
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Login")}>
               <Icon name="close" size={30} color="black" />
             </TouchableOpacity>
           }
