@@ -99,9 +99,21 @@ class userregScreen extends Component {
                 onChangeText={password => this.setState({ password })}
               />
               <Button
-                title="GO TO PROFILE"
+                title="SAVE USER"
                 // onPress={() => this.props.navigation.navigate("Profile")}
                 onPress={this.handleClick}
+                buttonStyle={{
+                  backgroundColor: "black",
+                  borderRadius: 5,
+                  width: 200,
+                  alignSelf: "center",
+                  margin: 5
+                }}
+              />
+              <Button
+                title="RETURN TO LOGIN"
+                // onPress={() => this.props.navigation.navigate("Profile")}
+                onPress={() => this.props.navigation.navigate("Login")}
                 buttonStyle={{
                   backgroundColor: "black",
                   borderRadius: 5,
