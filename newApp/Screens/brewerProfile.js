@@ -9,14 +9,15 @@ import {
   Alert,
   Dimensions,
   TouchableWithoutFeedback,
-  Modal
+  Modal,
+  TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Avatar, Card, Button, Header } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-class profileScreen extends Component {
+class brewerProfile extends Component {
   state = {
     modalVisible: false,
     modalImage: require("../assets/beer1.jpg"),
@@ -27,7 +28,8 @@ class profileScreen extends Component {
       require("../assets/beer4.jpg"),
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
-    ]
+    ],
+    beer: ["IPA", "Hefeweizen", "Pale Ale", "Pilsner"]
   };
 
   static navigationOptions = {
@@ -60,7 +62,7 @@ class profileScreen extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-        <Header
+       <Header
           outerContainerStyles={{
             backgroundColor: "#d3d3d3",
             height: 75,
@@ -110,6 +112,9 @@ class profileScreen extends Component {
         >
           <Card
             title="User Name"
+            titleStyle={{
+              color: "black"
+            }}
             containerStyle={{
               marginBottom: 5,
               alignItems: "stretch",
@@ -124,6 +129,21 @@ class profileScreen extends Component {
             <Text>Password:</Text>
             <Text>Description:</Text>
           </Card>
+          <Card
+            title="Beer List"
+            titleStyle={{
+              color: "black"
+            }}
+            containerStyle={{
+              marginBottom: 5,
+              alignItems: "stretch",
+              justifyContent: "center",
+              marginLeft: 0,
+              marginRight: 0,
+              backgroundColor: "#d3d3d3",
+              opacity: 0.7
+            }}
+          />
           <ScrollView
             horizontal={true}
             contentContainerStyle={{
@@ -170,7 +190,7 @@ class profileScreen extends Component {
   }
 }
 
-export default profileScreen;
+export default brewerProfile;
 
 const styles = StyleSheet.create({
   container: {
