@@ -20,6 +20,20 @@ export default {
       .catch(err => console.log("Error", err));
   },
 
+  saveBeer: function(beer) {
+    console.log("Beer saved", beer);
+    fetch(url + "/api/beers", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(beer)
+    })
+      .then(response => console.log("Fetch Response", response))
+      .catch(err => console.log("Error", err));
+  },
+
   saveBrewer: function(brewer) {
     console.log("Brewer Saved", brewer);
 
