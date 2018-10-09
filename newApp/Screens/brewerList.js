@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 import {
   StyleSheet,
   View,
@@ -18,13 +19,20 @@ class brewerList extends Component {
   state = {
     search: "",
     brewers: [
-      "Crooked Tooth",
-      "Pueblo Vida",
-      "Button Brew House",
-      "1055 Brewery and Sausage House",
-      "Dragoon"
+     
     ]
   };
+
+  componentDidMount(){
+    this.loadBrewers();
+  }
+
+  loadBrewers = () =>{
+API.loadBrewer().then(response =>{
+  this.setState({brewers:response})
+})
+
+  }
 
   static navigationOptions = {
     header: null
