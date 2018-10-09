@@ -18,25 +18,78 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 class brewerList extends Component {
   state = {
     search: "",
-    brewers: [
-     
-    ]
+    brewers: []
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.loadBrewers();
   }
 
-  loadBrewers = () =>{
-API.loadBrewer().then(response =>{
-  this.setState({brewers:response})
-})
-
-  }
+  loadBrewers = () => {
+    API.loadBrewer().then(response => {
+      this.setState({ brewers: response });
+      console.log(this.state.brewers);
+    });
+  };
 
   static navigationOptions = {
     header: null
   };
+
+  brewers() {
+    return this.state.brewers.map((brewers, key) => {
+      return (
+        <View
+          key={key}
+          style={{
+            flexDirection: "row",
+            alignItems: "stretch",
+            justifyContent: "center"
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              marginRight: 30
+            }}
+          >
+            {brewers.BreweryName}
+          </Text>
+          <Button
+            title="Profile"
+            onPress={() => this.props.navigation.navigate("Brewer")}
+            buttonStyle={{
+              backgroundColor: "black",
+              width: 60,
+              height: 30,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5,
+              marginLeft: 10
+            }}
+            titleStyle={{
+              fontSize: 12
+            }}
+          />
+          <Button
+            title="Favorite"
+            buttonStyle={{
+              backgroundColor: "black",
+              width: 60,
+              height: 30,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5,
+              marginLeft: 10
+            }}
+            titleStyle={{
+              fontSize: 12
+            }}
+          />
+        </View>
+      );
+    });
+  }
 
   render() {
     return (
@@ -53,7 +106,9 @@ API.loadBrewer().then(response =>{
           }}
           leftComponent={
             <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Login")}>
+              //onPress={() => this.props.navigation.navigate("Login")}
+              onPress={() => this.loadBrewers()}
+            >
               <Icon name="close" size={30} color="black" />
             </TouchableOpacity>
           }
@@ -79,55 +134,8 @@ API.loadBrewer().then(response =>{
             titleStyle={{ fontSize: 20, color: "black" }}
             containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
           >
-            <View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "stretch",
-                  justifyContent: "center"
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 16,
-                    marginRight: 30
-                  }}
-                >
-                  Brewery A
-                </Text>
-                <Button
-                  title="Profile"
-                  onPress={() => this.props.navigation.navigate("Brewer")}
-                  buttonStyle={{
-                    backgroundColor: "black",
-                    width: 60,
-                    height: 30,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5,
-                    marginLeft: 10
-                  }}
-                  titleStyle={{
-                    fontSize: 12
-                  }}
-                />
-                <Button
-                  title="Favorite"
-                  buttonStyle={{
-                    backgroundColor: "black",
-                    width: 60,
-                    height: 30,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5,
-                    marginLeft: 10
-                  }}
-                  titleStyle={{
-                    fontSize: 12
-                  }}
-                />
-              </View>
-            </View>
+            {this.brewers()}
+            <View />
           </Card>
         </KeyboardAwareScrollView>
       </ImageBackground>
