@@ -79,5 +79,16 @@ export default {
     return fetch(url + "/api/brewers")
       .then(response => response.json())
       .catch(err => console.log(err));
+  },
+
+  addFavBrewer: function(favObject){
+	console.log(favObject)
+	return fetch(url + "/api/users/favbrewery",{
+		method: "POST",
+		headers: { Accept: "application/json",
+		"Content-Type": "application/json"},
+		body: JSON.stringify(favObject)
+	}).then(response => response.json())
+	.catch(err =>console.log(err));
   }
 };
