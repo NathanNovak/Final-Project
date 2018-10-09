@@ -42,11 +42,10 @@ class brewerProfile extends Component {
   }
 
   loadBeers = () => {
-    API.loadBeers(this.props.screenProps.currentBrewer)
-    .then(response => {
-    console.log(response);
-    this.setState({ beers: response });
-    console.log(this.state.beers);
+    API.loadBeers(this.props.screenProps.currentBrewer).then(response => {
+      console.log(response);
+      this.setState({ beers: response });
+      console.log(this.state.beers);
     });
   };
 
@@ -57,6 +56,25 @@ class brewerProfile extends Component {
 
   getImage() {
     return this.state.modalImage;
+  }
+
+  beers() {
+    return this.state.beers.map((beers, key) => {
+      return (
+        <Card
+          key={key}
+          style={{
+            flexDirection: "column",
+            alignItems: "stretch"
+          }}
+        >
+          <Text>Beer name: {beers.beerName}</Text>
+          <Text>IBUs: {beers.IBU}</Text>
+          <Text>ABV: {beers.ABV} %</Text>
+          <Text>Tasting Notes: {beers.tastingNotes}</Text>
+        </Card>
+      );
+    });
   }
   render() {
     let images = this.state.images.map((val, key) => {
@@ -154,16 +172,13 @@ class brewerProfile extends Component {
                 this.props.screenProps.currentBrewer.zip
               }`}
             </Text>
-            <Text>Description: {this.props.screenProps.currentBrewer.description}</Text>
+            <Text>
+              Description: {this.props.screenProps.currentBrewer.description}
+            </Text>
             <TouchableOpacity
               title="EDIT"
               onPress={() => this.props.navigation.navigate("Edit")}
             />
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Beers")}
-            >
-              <Text>ADD A BEER</Text>
-            </TouchableOpacity>
           </Card>
           <Card
             title="Beer List"
@@ -179,7 +194,14 @@ class brewerProfile extends Component {
               backgroundColor: "#d3d3d3",
               opacity: 0.7
             }}
-          />
+          >
+            {this.beers()}
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Beers")}
+            >
+              <Text>ADD A BEER</Text>
+            </TouchableOpacity>
+          </Card>
           <ScrollView
             horizontal={true}
             contentContainerStyle={{
