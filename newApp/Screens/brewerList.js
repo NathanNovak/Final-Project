@@ -32,6 +32,16 @@ class brewerList extends Component {
     });
   };
 
+  addFavBrewer = (id) =>{
+    console.log(id)
+   let favObject = {BrewerId:id,
+                UserId: this.props.screenProps.currentUser.id}
+    
+    API.addFavBrewer(favObject)
+  };
+
+
+
   static navigationOptions = {
     header: null
   };
@@ -57,7 +67,7 @@ class brewerList extends Component {
           </Text>
           <Button
             title="Profile"
-            onPress={() => this.props.navigation.navigate("Brewer")}
+           
             buttonStyle={{
               backgroundColor: "black",
               width: 60,
@@ -73,6 +83,7 @@ class brewerList extends Component {
           />
           <Button
             title="Favorite"
+            onPress = {()=> this.addFavBrewer(brewers.id)}
             buttonStyle={{
               backgroundColor: "black",
               width: 60,
