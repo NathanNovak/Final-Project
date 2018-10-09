@@ -75,20 +75,42 @@ export default {
     );
   },
 
-  loadBrewer: function() {
-    return fetch(url + "/api/brewers")
+  loadBrewer: function(brewer) {
+    return fetch(url + "/api/brewers", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(brewer)
+    })
       .then(response => response.json())
       .catch(err => console.log(err));
   },
 
-  addFavBrewer: function(favObject){
-	console.log(favObject)
-	return fetch(url + "/api/users/favbrewery",{
-		method: "POST",
-		headers: { Accept: "application/json",
-		"Content-Type": "application/json"},
-		body: JSON.stringify(favObject)
-	}).then(response => response.json())
-	.catch(err =>console.log(err));
+  loadBrewerById: function(id) {
+    return fetch(url + "/api/brewers/find/" + id, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .catch(err => console.log(err));
+  },
+
+  addFavBrewer: function(favObject) {
+    console.log(favObject);
+    return fetch(url + "/api/users/favbrewery", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(favObject)
+    })
+      .then(response => response.json())
+      .catch(err => console.log(err));
   }
 };

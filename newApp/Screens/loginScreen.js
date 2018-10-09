@@ -75,8 +75,10 @@ class loginScreen extends Component {
                 icon={<Icon name="user" size={30} color="white" />}
                 title="USER LOGIN"
                 onPress={() => {
-                  this.props.screenProps.loginUser(this.state);
-                  this.props.navigation.navigate("Home");
+                  this.props.screenProps.loginUser(this.state).then(x => {
+                    // console.log(x);
+                    this.props.navigation.navigate("Home");
+                  });
                 }}
               />
               <Button
