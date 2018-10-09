@@ -65,17 +65,22 @@ export default class App extends React.Component {
   };
 
   loginBrewer = (brewer, response) => {
-    API.authenticateBrewer(brewer).then(res => {
+    return new Promise ((resolve, reject) => {API.authenticateBrewer(brewer).then(res => {
       console.log("res " + JSON.stringify(res));
       this.setState({ currentBrewer: res });
       console.log(this.state.currentBrewer.loggedIn);
-      if (this.state.current.currentBrewer.loggedIn) {
+      if (this.state.currentBrewer.loggedIn) {
         console.log("logged in?" + this.state.currentBrewer.loggedIn);
+        resolve("IN")
       }
 
       // {() => this.props.navigation.navigate("Home")}
-      else Alert.alert("Invalid Username or Password");
-    });
+      else{
+         Alert.alert("Invalid Username or Password");
+        reject("err");
+      }
+    })
+    })
   };
 
   render() {
