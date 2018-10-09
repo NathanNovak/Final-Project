@@ -148,7 +148,7 @@ class homeScreen extends Component {
                 </Text>
                 <Button
                   title="Profile"
-                  onPress={() => this.props.navigation.navigate("Profile")}
+                  onPress={() => this.props.navigation.navigate("Brewer")}
                   buttonStyle={{
                     backgroundColor: "black",
                     width: 60,
