@@ -43,17 +43,22 @@ export default class App extends React.Component {
   };
 
   loginUser = (user, response) => {
-    API.authenticate(user).then(res => {
+    return new Promise((resolve, reject) => {API.authenticate(user).then(res => {
       console.log("res " + JSON.stringify(res));
       this.setState({ currentUser: res });
       console.log(this.state.currentUser.loggedIn);
       if (this.state.currentUser.loggedIn) {
         console.log("logged in?" + this.state.currentUser.loggedIn);
+        resolve("IN");
       }
 
       // {() => this.props.navigation.navigate("Home")}
-      else Alert.alert("Invalid Username or Password");
-    });
+      else {
+        Alert.alert("Invalid Username or Password");
+        reject("Err");
+      }
+    })
+  })
   };
 
   loginBrewer = (brewer, response) => {

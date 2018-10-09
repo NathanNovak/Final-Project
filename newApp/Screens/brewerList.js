@@ -27,20 +27,30 @@ class brewerList extends Component {
 
   loadBrewers = () => {
     API.loadBrewer().then(response => {
+      // console.log(response)
       this.setState({ brewers: response });
-      console.log(this.state.brewers);
+      // console.log(this.state.brewers);
     });
   };
 
-  addFavBrewer = (id) =>{
-    console.log(id)
-   let favObject = {BrewerId:id,
-                UserId: this.props.screenProps.currentUser.id}
-    
-    API.addFavBrewer(favObject)
+  addFavBrewer = id => {
+    console.log(id);
+    let favObject = {
+      BrewerId: id,
+      UserId: this.props.screenProps.currentUser.id
+    };
+
+    API.addFavBrewer(favObject);
   };
 
-
+  brewerProfile = id => {
+    console.log(id);
+    API.loadBrewerById(id).then(brewer => {
+      console.log("Brewer from Id", brewer);
+      this.props.screenProps.currentBrewer = brewer;
+      this.props.navigation.navigate("Brewer");
+    });
+  };
 
   static navigationOptions = {
     header: null
@@ -67,7 +77,8 @@ class brewerList extends Component {
           </Text>
           <Button
             title="Profile"
-           
+            id={brewers.id}
+            onPress={() => this.brewerProfile(brewers.id)}
             buttonStyle={{
               backgroundColor: "black",
               width: 60,
@@ -83,7 +94,7 @@ class brewerList extends Component {
           />
           <Button
             title="Favorite"
-            onPress = {()=> this.addFavBrewer(brewers.id)}
+            onPress={() => this.addFavBrewer(brewers.id)}
             buttonStyle={{
               backgroundColor: "black",
               width: 60,
