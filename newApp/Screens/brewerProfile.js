@@ -29,7 +29,7 @@ class brewerProfile extends Component {
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
     ],
-    beers: ["IPA", "Hefeweizen", "Pale Ale", "Pilsner"]
+    beers: []
   };
 
   static navigationOptions = {
@@ -144,8 +144,11 @@ class brewerProfile extends Component {
             <TouchableOpacity
               title="EDIT"
               onPress={() => this.props.navigation.navigate("Edit")}
+            />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Beers")}
             >
-              <Icon name="pencil" size={30} color="black" />
+              <Text>ADD A BEER</Text>
             </TouchableOpacity>
           </Card>
           <Card
