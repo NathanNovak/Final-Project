@@ -90,7 +90,7 @@ export default class App extends React.Component {
           loginUser: this.loginUser,
           currentUser: this.state.currentUser,
           loginBrewer: this.loginBrewer,
-          currentBrewer: this.state.currentBrewer
+          currentBrewer: this.state.currentBrewer,
         }}
       />
     );
