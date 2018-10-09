@@ -12,6 +12,7 @@ import {
   Modal,
   TouchableOpacity
 } from "react-native";
+import API from "../utils/API";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Avatar, Card, Button, Header } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
@@ -34,6 +35,19 @@ class brewerProfile extends Component {
 
   static navigationOptions = {
     header: null
+  };
+
+  componentDidMount() {
+    this.loadBeers();
+  }
+
+  loadBeers = () => {
+    API.loadBeers(this.props.screenProps.currentBrewer)
+    .then(response => {
+    console.log(response);
+    this.setState({ beers: response });
+    console.log(this.state.beers);
+    });
   };
 
   setModalVisible(visible, imageKey) {
@@ -140,7 +154,7 @@ class brewerProfile extends Component {
                 this.props.screenProps.currentBrewer.zip
               }`}
             </Text>
-            <Text>Description:</Text>
+            <Text>Description: {this.props.screenProps.currentBrewer.description}</Text>
             <TouchableOpacity
               title="EDIT"
               onPress={() => this.props.navigation.navigate("Edit")}

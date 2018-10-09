@@ -31,6 +31,7 @@ class beers extends Component {
     // event.preventDefault
     console.log("Test", beer);
     API.saveBeer({
+      brewerId: this.props.screenProps.currentBrewer.id,
       beerName: this.state.beerName,
       ibu: this.state.ibu,
       abv: this.state.abv,

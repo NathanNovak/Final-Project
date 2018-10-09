@@ -34,6 +34,21 @@ export default {
       .catch(err => console.log("Error", err));
   },
 
+  loadBeers: function(beers) {
+    console.log("Beers rendered", beers);
+    return fetch(url + "/api/beers/id", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(beers)
+    })
+      .then(response => response.json())
+
+      .catch(err => console.log("Error", err));
+  },
+
   saveBrewer: function(brewer) {
     console.log("Brewer Saved", brewer);
 
