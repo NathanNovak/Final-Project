@@ -141,7 +141,7 @@ class homeScreen extends Component {
           }}
           leftComponent={
             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-left" size={30} color="black" />
+              <Icon name="chevron-left" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -159,7 +159,7 @@ class homeScreen extends Component {
                 });
               }}
             >
-              <Icon name="home" size={30} color="black" />
+              <Icon name="sign-out" size={30} color="black" />
             </TouchableOpacity>
           }
         />
@@ -249,7 +249,7 @@ class homeScreen extends Component {
           </ScrollView>
           <Button
             title="TAKE A PHOTO"
-            onPress={() => this.props.navigation.navigate("Camera")}
+            //onPress={() => this.props.navigation.navigate("Camera")}
             buttonStyle={{
               backgroundColor: "black",
               borderRadius: 5,

@@ -5,7 +5,8 @@ import {
   View,
   TouchableOpacity,
   Text,
-  ScrollView
+  ScrollView,
+  ImageBackground
 } from "react-native";
 import { FileSystem, FaceDetector, MediaLibrary, Permissions } from "expo";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -27,7 +28,6 @@ let options = {
   successActionStatus: 201,
   accessKey: "",
   secretKey: ""
-
 };
 
 export default class GalleryScreen extends React.Component {
@@ -54,13 +54,15 @@ export default class GalleryScreen extends React.Component {
     });
     file.uri = result.uri;
     console.log(result, file, options);
-    RNS3.put(file, options).then(response => {
-      if (response.status !== 201)
-        throw new Error("Failed to uploade image to S3");
-      console.log(response.body);
-    }).catch(e => {
-      console.log(e)
-    });
+    RNS3.put(file, options)
+      .then(response => {
+        if (response.status !== 201)
+          throw new Error("Failed to uploade image to S3");
+        console.log(response.body);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   componentDidMount = async () => {
@@ -110,7 +112,10 @@ export default class GalleryScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground
+        source={require("../assets/beer-background.jpg")}
+        style={styles.container}
+      >
         <View style={styles.navbar}>
           <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
             <MaterialIcons name="arrow-back" size={25} color="white" />
@@ -124,7 +129,7 @@ export default class GalleryScreen extends React.Component {
             {this.state.photos.map(this.renderPhoto)}
           </View>
         </ScrollView>
-      </View>
+      </ImageBackground>
     );
   }
 }
@@ -132,8 +137,8 @@ export default class GalleryScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-    backgroundColor: "white"
+    width: "100%",
+    height: "100%"
   },
   navbar: {
     flexDirection: "row",

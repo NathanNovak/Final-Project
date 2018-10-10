@@ -103,7 +103,7 @@ class brewerProfile extends Component {
           }}
           leftComponent={
             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-left" size={30} color="black" />
+              <Icon name="chevron-left" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -121,7 +121,7 @@ class brewerProfile extends Component {
                 });
               }}
             >
-              <Icon name="home" size={30} color="black" />
+              <Icon name="sign-out" size={30} color="black" />
             </TouchableOpacity>
           }
         />

@@ -55,14 +55,14 @@ class beers extends Component {
           }}
           leftComponent={
             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-left" size={30} color="black" />
+              <Icon name="chevron-left" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("Brewers")}
             >
-              <Icon name="home" size={30} color="black" />
+              <Icon name="beer" size={30} color="black" />
             </TouchableOpacity>
           }
           rightComponent={
