@@ -102,6 +102,7 @@ class homeScreen extends Component {
     });
   };
 
+
   render() {
     return (
       <ImageBackground
