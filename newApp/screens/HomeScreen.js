@@ -114,6 +114,20 @@ class homeScreen extends Component {
     return this.state.modalImage;
   }
 
+  renderProfile() {
+    if (this.props.screenProps.currentUser) {
+      this.props.navigation.navigate("Profile");
+    } else if (this.props.screenProps.currentBrewer){
+      this.props.navigation.navigate("Brewer");
+    }
+  }
+ // renderBrewer() {
+   // if (this.props.screenProps.currentBrewer) {
+    //  this.props.navigation.navigate("Brewer");
+   // } 
+ // }
+
+
   render() {
     let images = this.state.images.map((val, key) => {
       return (
@@ -160,7 +174,7 @@ class homeScreen extends Component {
           }
           rightComponent={
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Profile")}
+              onPress={() => this.renderProfile()}
             >
               <Icon name="home" size={30} color="black" />
             </TouchableOpacity>
