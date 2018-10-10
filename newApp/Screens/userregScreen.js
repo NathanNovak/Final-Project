@@ -14,6 +14,7 @@ import { Input, Button, Overlay, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RF from "react-native-responsive-fontsize";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 class userregScreen extends Component {
   static navigationOptions = {
@@ -21,6 +22,7 @@ class userregScreen extends Component {
   };
 
   state = {
+    showAlert: false,
     isVisible: true,
     fname: "",
     lname: "",
@@ -38,10 +40,33 @@ class userregScreen extends Component {
       emailaddress: this.state.emailaddress,
       password: this.state.password,
       phonenumber: this.state.phonenumber
+    })
+      this.showAlert();
+      this.setState({
+        fname: "",
+        lname: "",
+        emailaddress: "",
+        password: "",
+        phonenumber: ""
+      })
+  };
+
+  showAlert = () => {
+    this.setState({
+      showAlert: true
+    });
+  };
+
+  hideAlert = () => {
+    this.setState({
+      showAlert: false
     });
   };
 
   render() {
+
+    const {showAlert} = this.state;
+
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
@@ -124,6 +149,27 @@ class userregScreen extends Component {
               />
             </Card>
           </KeyboardAwareScrollView>
+
+          <AwesomeAlert
+          show={showAlert}
+          showProgress={false}
+          title="Saved!"
+          message="Thank You For Registering!"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showCancelButton={false}
+          showConfirmButton={true}
+          // cancelText="No, cancel"
+          confirmText="Sure Thing!"
+          confirmButtonColor="#DD6B55"
+          // onCancelPressed={() => {
+          //   this.hideAlert();
+          // }}
+          onConfirmPressed={() => {
+            this.hideAlert();
+          }}
+        />
+
         </View>
       </ImageBackground>
     );
@@ -161,5 +207,23 @@ const styles = StyleSheet.create({
     marginRight: "10%",
     marginBottom: "20%",
     backgroundColor: "#d3d3d3"
-  }
+  },
+  
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#fff',
+    },
+    button: {
+      margin: 10,
+      paddingHorizontal: 10,
+      paddingVertical: 7,
+      borderRadius: 5,
+      backgroundColor: "#AEDEF4",
+    },
+    text: {
+      color: '#fff',
+      fontSize: 15
+    }
 });
