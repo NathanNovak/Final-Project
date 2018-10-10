@@ -64,6 +64,28 @@ export default class App extends React.Component {
     });
   };
 
+  logoutUser = (user, response) => {
+    return new Promise((resolve, reject) => {
+      API.logoutUser(user).then(res => {
+        console.log("res " + JSON.stringify(res));
+        this.setState({ currentUser: res });
+        console.log(this.state.currentUser.loggedIn);
+        if (!this.state.currentUser.loggedIn) {
+          console.log("logged in?" + this.state.currentUser.loggedIn);
+          resolve("IN");
+        }
+
+        // {() => this.props.navigation.navigate("Home")}
+        else {
+          Alert.alert("Invalid Username or Password");
+          reject("Err");
+        }
+      });
+    });
+  };
+
+  
+
   loginBrewer = (brewer, response) => {
     return new Promise ((resolve, reject) => {API.authenticateBrewer(brewer).then(res => {
       console.log("res " + JSON.stringify(res));
@@ -88,6 +110,7 @@ export default class App extends React.Component {
       <AppStackNavigator
         screenProps={{
           loginUser: this.loginUser,
+          logoutUser: this.logoutUser,
           currentUser: this.state.currentUser,
           loginBrewer: this.loginBrewer,
           currentBrewer: this.state.currentBrewer
