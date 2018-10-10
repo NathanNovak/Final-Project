@@ -83,14 +83,24 @@ export default class App extends React.Component {
     })
   };
 
+  logoutUser = (user)=>{
+    API.logoutUser(user)
+  };
+  logoutBrewer = (brewer)=>{
+    API.logoutUser(brewer)
+  }
+
   render() {
     return (
       <AppStackNavigator
         screenProps={{
           loginUser: this.loginUser,
+          logoutUser: this.logoutUser,
           currentUser: this.state.currentUser,
           loginBrewer: this.loginBrewer,
+          logoutBrewer: this.logoutBrewer,
           currentBrewer: this.state.currentBrewer
+          
         }}
       />
     );
