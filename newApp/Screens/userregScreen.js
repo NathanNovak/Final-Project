@@ -153,15 +153,15 @@ class userregScreen extends Component {
           <AwesomeAlert
           show={showAlert}
           showProgress={false}
-          title="Saved!"
-          message="Thank You For Registering!"
+          title="Registered"
+          message="Thank You For Registering."
           closeOnTouchOutside={true}
           closeOnHardwareBackPress={false}
           showCancelButton={false}
           showConfirmButton={true}
           // cancelText="No, cancel"
-          confirmText="Sure Thing!"
-          confirmButtonColor="#DD6B55"
+          confirmText="Return"
+          confirmButtonColor="black"
           // onCancelPressed={() => {
           //   this.hideAlert();
           // }}
