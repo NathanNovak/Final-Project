@@ -73,7 +73,6 @@ class profileScreen extends Component {
           leftComponent={
             <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Login")}
-            // onPress={console.log(this.props.screenProps)}
             >
               <Icon name="close" size={30} color="black" />
             </TouchableOpacity>
@@ -161,7 +160,7 @@ class profileScreen extends Component {
           </ScrollView>
           <Button
             title="TAKE A PHOTO"
-            onPress={() => this.props.navigation.navigate("Camera")}
+            //onPress={() => this.props.navigation.navigate("Camera")}
             buttonStyle={{
               backgroundColor: "black",
               borderRadius: 5,

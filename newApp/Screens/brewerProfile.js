@@ -103,7 +103,7 @@ class brewerProfile extends Component {
           }}
           leftComponent={
             <TouchableOpacity>
-              <Icon name="close" size={30} color="black" />
+              <Icon name="sign-out" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -163,7 +163,6 @@ class brewerProfile extends Component {
             <Text>
               Phone Number: {this.props.screenProps.currentBrewer.phone}
             </Text>
-            <Text>Hours: {this.props.screenProps.currentBrewer.hours}</Text>
             <Text>
               Address:{" "}
               {`${this.props.screenProps.currentBrewer.address} ${
@@ -176,9 +175,10 @@ class brewerProfile extends Component {
               Description: {this.props.screenProps.currentBrewer.description}
             </Text>
             <TouchableOpacity
-              title="EDIT"
               onPress={() => this.props.navigation.navigate("Edit")}
-            />
+            >
+              <Text>EDIT PROFILE</Text>
+            </TouchableOpacity>
           </Card>
           <Card
             title="Beer List"
@@ -233,7 +233,7 @@ class brewerProfile extends Component {
           </ScrollView>
           <Button
             title="TAKE A PHOTO"
-            onPress={() => this.props.navigation.navigate("Camera")}
+            //onPress={() => this.props.navigation.navigate("Camera")}
             buttonStyle={{
               backgroundColor: "black",
               borderRadius: 5,
