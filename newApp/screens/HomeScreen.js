@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 import {
   StyleSheet,
   View,
@@ -24,13 +25,7 @@ import { createStackNavigator } from "react-navigation";
 class homeScreen extends Component {
   state = {
     search: "",
-    brewers: [
-      "Crooked Tooth",
-      "Pueblo Vida",
-      "Button Brew House",
-      "1055 Brewery and Sausage House",
-      "Dragoon"
-    ],
+    brewers: [],
     modalVisible: false
   };
 
@@ -40,6 +35,17 @@ class homeScreen extends Component {
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
+  }
+  componentDidMount(){
+    this.loadFavBrewers();
+  }
+
+  loadFavBrewers = () => {
+    API.loadFavBrewers(this.props.screenProps.currentUser)
+    .then(response => {
+      this.setState({brewers:response})
+      console.log("state " + response)
+    })
   }
 
   render() {

@@ -89,6 +89,34 @@ export default {
     );
   },
 
+  logoutUser: function(id){
+	  return(
+		  fetch(url + "/api/users/logout", {
+			  method: "POST",
+			  headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			  },
+			  body: JSON.stringify(id)
+			})
+			.catch(err => console.log(err))
+	  );
+  },
+
+  logoutBrewer: function(id){
+	return(
+		fetch(url + "/api/brewers/logout", {
+			method: "POST",
+			headers: {
+			  Accept: "application/json",
+			  "Content-Type": "application/json"
+			},
+			body: JSON.stringify(id)
+		  })
+		  .catch(err => console.log(err))
+	);
+},
+
   loadBrewer: function(brewer) {
     return fetch(url + "/api/brewers", {
       method: "GET",
@@ -126,5 +154,19 @@ export default {
     })
       .then(response => response.json())
       .catch(err => console.log(err));
+  },
+  
+  loadFavBrewers: function(user){
+	  return fetch(url + "/api/users/favbrewery/id", {
+		  method: "POST",
+		  headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json"
+		  },
+		  body: JSON.stringify(user)
+
+	  })
+	  .then(response => response.json())
+	  .catch(err => console.log(err));
   }
 };
