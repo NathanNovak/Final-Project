@@ -104,7 +104,7 @@ class loginScreen extends Component {
                 title="BREWER LOGIN"
                 onPress={() => {
                   this.props.screenProps.loginBrewer(this.state);
-                  this.props.navigation.navigate("Home");
+                  this.props.navigation.navigate("Brewer");
                 }}
               />
 
