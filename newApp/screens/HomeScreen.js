@@ -18,8 +18,8 @@ import { Avatar, Card, Button, Header } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-class profileScreen extends Component {
-  state = {<<<<<<< homescreenfix
+class homeScreen extends Component {
+  state = {
     modalVisible: false,
     modalImage: require("../assets/beer1.jpg"),
     images: [
@@ -34,7 +34,6 @@ class profileScreen extends Component {
     search: "",
     brewers: [],
     modalVisible: false
-
   };
 
   static navigationOptions = {
@@ -111,11 +110,9 @@ class profileScreen extends Component {
     });
   };
 
-
   getImage() {
     return this.state.modalImage;
   }
-
 
   render() {
     let images = this.state.images.map((val, key) => {
@@ -152,7 +149,6 @@ class profileScreen extends Component {
               }}
             >
               <Icon name="sign-out" size={30} color="black" />
-
             </TouchableOpacity>
           }
           centerComponent={
@@ -194,7 +190,9 @@ class profileScreen extends Component {
           }}
         >
           <Card
-            title={`${this.props.screenProps.currentUser.firstName} ${this.props.screenProps.currentUser.lastName}`}
+            title={`${this.props.screenProps.currentUser.firstName} ${
+              this.props.screenProps.currentUser.lastName
+            }`}
             containerStyle={{
               marginBottom: 5,
               alignItems: "stretch",
@@ -218,7 +216,7 @@ class profileScreen extends Component {
               opacity: 0.7,
               marginBottom: 60,
               marginLeft: 0,
-              marginRight: 0,
+              marginRight: 0
             }}
           >
             {this.favorites()}
@@ -269,7 +267,7 @@ class profileScreen extends Component {
   }
 }
 
-export default profileScreen;
+export default homeScreen;
 
 const styles = StyleSheet.create({
   container: {
