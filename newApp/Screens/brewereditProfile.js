@@ -18,7 +18,7 @@ import { Avatar, Card, Button, Header } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-class brewerProfile extends Component {
+class brewereditProfile extends Component {
   state = {
     modalVisible: false,
     modalImage: require("../assets/beer1.jpg"),
@@ -178,6 +178,11 @@ class brewerProfile extends Component {
             <Text>
               Description: {this.props.screenProps.currentBrewer.description}
             </Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Edit")}
+            >
+              <Text>EDIT PROFILE</Text>
+            </TouchableOpacity>
           </Card>
           <Card
             title="Beer List"
@@ -195,6 +200,11 @@ class brewerProfile extends Component {
             }}
           >
             {this.beers()}
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Beers")}
+            >
+              <Text>ADD A BEER</Text>
+            </TouchableOpacity>
           </Card>
           <ScrollView
             horizontal={true}
@@ -242,7 +252,7 @@ class brewerProfile extends Component {
   }
 }
 
-export default brewerProfile;
+export default brewereditProfile;
 
 const styles = StyleSheet.create({
   container: {

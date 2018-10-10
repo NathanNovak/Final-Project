@@ -11,6 +11,7 @@ import {
 import { createStackNavigator } from "react-navigation";
 import loginScreen from "./Screens/loginScreen";
 import homeScreen from "./Screens/HomeScreen";
+import brewereditProfile from "./Screens/brewereditProfile";
 import brewerProfile from "./Screens/brewerProfile";
 import brewerList from "./Screens/brewerList";
 import breweryregScreen from "./Screens/breweryregScreen";
@@ -26,8 +27,9 @@ const AppStackNavigator = createStackNavigator({
   BrewReg: breweryregScreen,
   UserReg: userregScreen,
   Camera: cameraScreen,
-  Brewer: brewerProfile,
+  Brewer: brewereditProfile,
   Brewers: brewerList,
+  UserBrewer: brewerProfile,
   Edit: edit,
   Beers: beers
 });
@@ -39,8 +41,10 @@ export default class App extends React.Component {
 
   state = {
     currentUser: [],
-    currentBrewer: []
+    currentBrewer: [],
+    brewers: []
   };
+
 
   loginUser = (user, response) => {
     return new Promise((resolve, reject) => {
@@ -111,7 +115,8 @@ export default class App extends React.Component {
           logoutUser: this.logoutUser,
           currentUser: this.state.currentUser,
           loginBrewer: this.loginBrewer,
-          currentBrewer: this.state.currentBrewer
+          currentBrewer: this.state.currentBrewer,
+          brewers:this.state.brewers
         }}
       />
     );

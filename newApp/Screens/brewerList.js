@@ -14,7 +14,7 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Card, ListItem, Button, Header } from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import AwesomeAlert from 'react-native-awesome-alerts';
+import AwesomeAlert from "react-native-awesome-alerts";
 
 class brewerList extends Component {
   state = {
@@ -51,7 +51,7 @@ class brewerList extends Component {
     API.loadBrewerById(id).then(brewer => {
       console.log("Brewer from Id", brewer);
       this.props.screenProps.currentBrewer = brewer;
-      this.props.navigation.navigate("Brewer");
+      this.props.navigation.navigate("UserBrewer");
     });
   };
 
@@ -72,7 +72,6 @@ class brewerList extends Component {
   };
 
   brewers() {
-
     return this.state.brewers.map((brewers, key) => {
       return (
         <View
@@ -124,22 +123,20 @@ class brewerList extends Component {
               fontSize: 12
             }}
           />
-
-           
         </View>
       );
     });
   }
 
   render() {
-    const {showAlert} = this.state;
+    const { showAlert } = this.state;
 
     return (
       <ImageBackground
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
- <Header
+        <Header
           outerContainerStyles={{
             backgroundColor: "#d3d3d3",
             height: 75,
@@ -179,7 +176,6 @@ class brewerList extends Component {
           >
             {this.brewers()}
 
-          
             <View />
           </Card>
         </KeyboardAwareScrollView>

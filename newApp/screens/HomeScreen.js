@@ -55,6 +55,15 @@ class homeScreen extends Component {
     });
   };
 
+  brewerProfile = id => {
+    console.log(id);
+    API.loadBrewerById(id).then(brewer => {
+      console.log("Brewer from Id", brewer);
+      this.props.screenProps.currentBrewer = brewer;
+      this.props.navigation.navigate("UserBrewer");
+    });
+  };
+
   favorites = () => {
     return this.state.brewers.map((brewers, key) => {
       return (
@@ -76,7 +85,8 @@ class homeScreen extends Component {
           </Text>
           <Button
             title="Profile"
-            onPress={() => this.props.navigation.navigate("Brewer")}
+            id={brewers.id}
+            onPress={() => this.brewerProfile(brewers.id)}
             buttonStyle={{
               backgroundColor: "black",
               width: 60,
