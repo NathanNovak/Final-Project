@@ -43,8 +43,8 @@ class homeScreen extends Component {
   loadFavBrewers = () => {
     API.loadFavBrewers(this.props.screenProps.currentUser)
     .then(response => {
-      this.setState({brewers:response})
-      console.log("state " + response)
+      this.setState({brewers:JSON.stringify(response)})
+      console.log("state " + this.state.brewers)
     })
   }
 
