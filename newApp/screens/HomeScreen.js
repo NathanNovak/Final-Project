@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 import {
   ScrollView,
   StyleSheet,
@@ -18,7 +19,7 @@ import ImageElement from "../components/ImageElement";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 class profileScreen extends Component {
-  state = {
+  state = {<<<<<<< homescreenfix
     modalVisible: false,
     modalImage: require("../assets/beer1.jpg"),
     images: [
@@ -28,7 +29,12 @@ class profileScreen extends Component {
       require("../assets/beer4.jpg"),
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
-    ]
+    ],
+
+    search: "",
+    brewers: [],
+    modalVisible: false
+
   };
 
   static navigationOptions = {
@@ -39,6 +45,72 @@ class profileScreen extends Component {
     this.setState({ modalImage: this.state.images[imageKey] });
     this.setState({ modalVisible: visible });
   }
+  componentDidMount() {
+    this.loadFavBrewers();
+  }
+
+  loadFavBrewers = () => {
+    API.loadFavBrewers(this.props.screenProps.currentUser).then(response => {
+      this.setState({ brewers: response });
+      console.log("state " + response);
+    });
+  };
+
+  favorites = () => {
+    return this.state.brewers.map((brewers, key) => {
+      return (
+        <View
+          key={key}
+          style={{
+            flexDirection: "row",
+            alignItems: "stretch",
+            justifyContent: "center"
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              marginRight: 30
+            }}
+          >
+            {brewers.BreweryName}
+          </Text>
+          <Button
+            title="Profile"
+            onPress={() => this.props.navigation.navigate("Brewer")}
+            buttonStyle={{
+              backgroundColor: "black",
+              width: 60,
+              height: 30,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5,
+              marginLeft: 10
+            }}
+            titleStyle={{
+              fontSize: 12
+            }}
+          />
+          <Button
+            title="Remove"
+            buttonStyle={{
+              backgroundColor: "black",
+              width: 60,
+              height: 30,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5,
+              marginLeft: 10
+            }}
+            titleStyle={{
+              fontSize: 12
+            }}
+          />
+        </View>
+      );
+    });
+  };
+
 
   getImage() {
     return this.state.modalImage;
@@ -72,10 +144,15 @@ class profileScreen extends Component {
           }}
           leftComponent={
             <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Login")}
-            // onPress={console.log(this.props.screenProps)}
+              onPress={() => {
+                this.props.screenProps.logoutUser(this.state).then(x => {
+                  // console.log(x);
+                  this.props.navigation.navigate("Login");
+                });
+              }}
             >
-              <Icon name="close" size={30} color="black" />
+              <Icon name="sign-out" size={30} color="black" />
+
             </TouchableOpacity>
           }
           centerComponent={
@@ -134,7 +211,7 @@ class profileScreen extends Component {
             <Text>Email: {this.props.screenProps.currentUser.email}</Text>
           </Card>
           <Card
-            title="Saved Breweries"
+            title="Favorite Breweries"
             titleStyle={{ fontSize: 20, color: "black" }}
             containerStyle={{
               backgroundColor: "#d3d3d3",
@@ -144,55 +221,7 @@ class profileScreen extends Component {
               marginRight: 0,
             }}
           >
-            <View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "stretch",
-                  justifyContent: "center"
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 16,
-                    marginRight: 30
-                  }}
-                >
-                  Brewery A
-                </Text>
-                <Button
-                  title="Profile"
-                  onPress={() => this.props.navigation.navigate("Brewer")}
-                  buttonStyle={{
-                    backgroundColor: "black",
-                    width: 60,
-                    height: 30,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5,
-                    marginLeft: 10
-                  }}
-                  titleStyle={{
-                    fontSize: 12
-                  }}
-                />
-                <Button
-                  title="Remove"
-                  buttonStyle={{
-                    backgroundColor: "black",
-                    width: 60,
-                    height: 30,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5,
-                    marginLeft: 10
-                  }}
-                  titleStyle={{
-                    fontSize: 12
-                  }}
-                />
-              </View>
-            </View>
+            {this.favorites()}
           </Card>
           <ScrollView
             horizontal={true}
