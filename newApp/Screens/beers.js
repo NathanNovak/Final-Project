@@ -40,6 +40,15 @@ class beers extends Component {
     });
   };
 
+  brewerProfile = id => {
+    console.log(id);
+    API.loadBrewerById(id).then(brewer => {
+      console.log("Brewer from Id", brewer);
+      this.props.screenProps.currentBrewer = brewer;
+      this.props.navigation.navigate("Brewer");
+    });
+  };
+
   render() {
     return (
       <ImageBackground
@@ -135,8 +144,9 @@ class beers extends Component {
                 }}
               />
               <Button
+              id={this.props.screenProps.currentBrewer.id}
                 title="RETURN TO PROFILE"
-                onPress={() => this.props.navigation.navigate("Brewer")}
+                onPress={() => this.brewerProfile(this.props.screenProps.currentBrewer.id)}
                 buttonStyle={{
                   backgroundColor: "black",
                   borderRadius: 5,
