@@ -1,12 +1,10 @@
 import { Constants, Camera, FileSystem, Permissions } from "expo";
 import React from "react";
 import {
-  Alert,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  Slider,
   Platform
 } from "react-native";
 import GalleryScreen from "./GalleryScreen";
@@ -14,9 +12,7 @@ import GalleryScreen from "./GalleryScreen";
 import {
   Ionicons,
   MaterialIcons,
-  Foundation,
-  MaterialCommunityIcons,
-  Octicons
+  Foundation
 } from "@expo/vector-icons";
 
 
