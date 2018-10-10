@@ -187,7 +187,10 @@ class homeScreen extends Component {
           <Avatar
             size="xlarge"
             rounded
-            title="CR"
+            source={{
+              uri:
+                "https://cmga360spirits.files.wordpress.com/2016/12/jk-garrett-crowell.jpg"
+            }}
             onPress={() => console.log("Works!")}
             activeOpacity={0.7}
           />

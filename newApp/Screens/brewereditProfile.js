@@ -136,7 +136,10 @@ class brewereditProfile extends Component {
           <Avatar
             size="xlarge"
             rounded
-            title="CR"
+            source={{
+              uri:
+                "http://allaboutbeer.com/wp-content/uploads/2014/05/Mark-Carpenter-Anchor-Brewing-Co.jpg"
+            }}
             onPress={() => console.log("Works!")}
             activeOpacity={0.7}
           />
