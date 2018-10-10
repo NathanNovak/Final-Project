@@ -36,17 +36,72 @@ class homeScreen extends Component {
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
-  componentDidMount(){
+  componentDidMount() {
     this.loadFavBrewers();
   }
 
   loadFavBrewers = () => {
-    API.loadFavBrewers(this.props.screenProps.currentUser)
-    .then(response => {
-      this.setState({brewers:JSON.stringify(response)})
-      console.log("state " + this.state.brewers)
-    })
-  }
+    API.loadFavBrewers(this.props.screenProps.currentUser).then(response => {
+      this.setState({ brewers: response });
+      console.log("state " + response);
+    });
+  };
+
+  favorites = () => {
+    return this.state.brewers.map((brewers, key) => {
+      return (
+        <View
+          key={key}
+          style={{
+            flexDirection: "row",
+            alignItems: "stretch",
+            justifyContent: "center"
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 16,
+              marginRight: 30
+            }}
+          >
+            {brewers.BreweryName}
+          </Text>
+          <Button
+            title="Profile"
+            onPress={() => this.props.navigation.navigate("Brewer")}
+            buttonStyle={{
+              backgroundColor: "black",
+              width: 60,
+              height: 30,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5,
+              marginLeft: 10
+            }}
+            titleStyle={{
+              fontSize: 12
+            }}
+          />
+          <Button
+            title="Remove"
+            buttonStyle={{
+              backgroundColor: "black",
+              width: 60,
+              height: 30,
+              borderColor: "transparent",
+              borderWidth: 0,
+              borderRadius: 5,
+              marginLeft: 10
+            }}
+            titleStyle={{
+              fontSize: 12
+            }}
+          />
+        </View>
+      );
+    });
+  };
+
 
   render() {
     return (
@@ -63,8 +118,9 @@ class homeScreen extends Component {
           }}
           leftComponent={
             <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Login")}>
-              <Icon name="close" size={30} color="black" />
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              <Icon name="sign-out" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -128,7 +184,7 @@ class homeScreen extends Component {
             </View>
           </Card>
           <Card
-            title="Saved Breweries"
+            title="Favorite Breweries"
             titleStyle={{ fontSize: 20, color: "black" }}
             containerStyle={{
               backgroundColor: "#d3d3d3",
@@ -136,55 +192,7 @@ class homeScreen extends Component {
               marginBottom: 300
             }}
           >
-            <View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "stretch",
-                  justifyContent: "center"
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 16,
-                    marginRight: 30
-                  }}
-                >
-                  Brewery A
-                </Text>
-                <Button
-                  title="Profile"
-                  onPress={() => this.props.navigation.navigate("Brewer")}
-                  buttonStyle={{
-                    backgroundColor: "black",
-                    width: 60,
-                    height: 30,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5,
-                    marginLeft: 10
-                  }}
-                  titleStyle={{
-                    fontSize: 12
-                  }}
-                />
-                <Button
-                  title="Remove"
-                  buttonStyle={{
-                    backgroundColor: "black",
-                    width: 60,
-                    height: 30,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5,
-                    marginLeft: 10
-                  }}
-                  titleStyle={{
-                    fontSize: 12
-                  }}
-                />
-              </View>
-            </View>
+            {this.favorites()}
           </Card>
         </KeyboardAwareScrollView>
       </ImageBackground>

@@ -130,7 +130,7 @@ class brewerList extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("Login")}
             >
-              <Icon name="close" size={30} color="black" />
+              <Icon name="sign-out" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
