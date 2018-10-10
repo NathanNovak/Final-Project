@@ -102,8 +102,8 @@ class brewerProfile extends Component {
             opacity: 0.7
           }}
           leftComponent={
-            <TouchableOpacity>
-              <Icon name="sign-out" size={30} color="black" />
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-left" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -115,7 +115,11 @@ class brewerProfile extends Component {
           }
           rightComponent={
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Profile")}
+              onPress={() => {
+                this.props.screenProps.logoutUser(this.state).then(x => {
+                  this.props.navigation.navigate("Login");
+                });
+              }}
             >
               <Icon name="home" size={30} color="black" />
             </TouchableOpacity>

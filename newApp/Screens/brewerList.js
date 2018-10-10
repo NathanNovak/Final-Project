@@ -139,7 +139,7 @@ class brewerList extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
-        <Header
+ <Header
           outerContainerStyles={{
             backgroundColor: "#d3d3d3",
             height: 75,
@@ -147,10 +147,8 @@ class brewerList extends Component {
             opacity: 0.7
           }}
           leftComponent={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Login")}
-            >
-              <Icon name="sign-out" size={30} color="black" />
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-left" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -162,7 +160,11 @@ class brewerList extends Component {
           }
           rightComponent={
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Profile")}
+              onPress={() => {
+                this.props.screenProps.logoutUser(this.state).then(x => {
+                  this.props.navigation.navigate("Login");
+                });
+              }}
             >
               <Icon name="home" size={30} color="black" />
             </TouchableOpacity>
