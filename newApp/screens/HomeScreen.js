@@ -70,7 +70,7 @@ class homeScreen extends Component {
           }
           rightComponent={
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Brewer")}
+              onPress={() => this.props.navigation.navigate("Profile")}
             >
               <Icon name="home" size={30} color="black" />
             </TouchableOpacity>
