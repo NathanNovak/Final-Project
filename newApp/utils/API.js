@@ -114,6 +114,7 @@ export default {
 			  },
 			  body: JSON.stringify(id)
 			})
+			.then(response => response.json)
 			.catch(err => console.log(err))
 	  );
   },

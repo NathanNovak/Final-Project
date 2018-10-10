@@ -118,7 +118,12 @@ class homeScreen extends Component {
           }}
           leftComponent={
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Login")}
+              onPress={() => {
+                this.props.screenProps.logoutUser(this.state).then(x => {
+                  // console.log(x);
+                  this.props.navigation.navigate("Login");
+                });
+              }}
             >
               <Icon name="sign-out" size={30} color="black" />
             </TouchableOpacity>
