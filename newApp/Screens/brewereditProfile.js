@@ -181,11 +181,17 @@ class brewereditProfile extends Component {
             <Text>
               Description: {this.props.screenProps.currentBrewer.description}
             </Text>
-            <TouchableOpacity
+            <Button
+              buttonStyle={{
+                backgroundColor: "black",
+                borderRadius: 5,
+                width: 200,
+                alignSelf: "center",
+                margin: 5
+              }}
+              title="Edit Profile"
               onPress={() => this.props.navigation.navigate("Edit")}
-            >
-              <Text>EDIT PROFILE</Text>
-            </TouchableOpacity>
+            />
           </Card>
           <Card
             title="Beer List"
@@ -203,11 +209,17 @@ class brewereditProfile extends Component {
             }}
           >
             {this.beers()}
-            <TouchableOpacity
+            <Button
+              buttonStyle={{
+                backgroundColor: "black",
+                borderRadius: 5,
+                width: 200,
+                alignSelf: "center",
+                margin: 5
+              }}
+              title="ADD BEER"
               onPress={() => this.props.navigation.navigate("Beers")}
-            >
-              <Text>ADD A BEER</Text>
-            </TouchableOpacity>
+            />
           </Card>
           <ScrollView
             horizontal={true}
