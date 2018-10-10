@@ -7,9 +7,10 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  Alert
+  Alert,
+  TouchableOpacity
 } from "react-native";
-import { Input, Button, Overlay, Card } from "react-native-elements";
+import { Input, Button, Overlay, Card, Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RF from "react-native-responsive-fontsize";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -45,6 +46,37 @@ class beers extends Component {
         source={require("../assets/beer-background.jpg")}
         style={styles.container}
       >
+       <Header
+          outerContainerStyles={{
+            backgroundColor: "#d3d3d3",
+            height: 75,
+            paddingTop: 15,
+            opacity: 0.7
+          }}
+          leftComponent={
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-left" size={30} color="black" />
+            </TouchableOpacity>
+          }
+          centerComponent={
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Brewers")}
+            >
+              <Icon name="home" size={30} color="black" />
+            </TouchableOpacity>
+          }
+          rightComponent={
+            <TouchableOpacity
+              onPress={() => {
+                this.props.screenProps.logoutUser(this.state).then(x => {
+                  this.props.navigation.navigate("Login");
+                });
+              }}
+            >
+              <Icon name="sign-out" size={30} color="black" />
+            </TouchableOpacity>
+          }
+        />
         <View>
           <KeyboardAwareScrollView
             keyboardDismissMode="on-drag"
