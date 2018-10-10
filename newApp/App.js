@@ -11,7 +11,6 @@ import {
 import { createStackNavigator } from "react-navigation";
 import loginScreen from "./Screens/loginScreen";
 import homeScreen from "./Screens/HomeScreen";
-import profileScreen from "./Screens/profileScreen";
 import brewerProfile from "./Screens/brewerProfile";
 import brewerList from "./Screens/brewerList";
 import breweryregScreen from "./Screens/breweryregScreen";
@@ -24,7 +23,6 @@ import API from "./utils/API";
 const AppStackNavigator = createStackNavigator({
   Login: loginScreen,
   Home: homeScreen,
-  Profile: profileScreen,
   BrewReg: breweryregScreen,
   UserReg: userregScreen,
   Camera: cameraScreen,

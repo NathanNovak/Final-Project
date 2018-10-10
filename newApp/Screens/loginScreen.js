@@ -103,8 +103,9 @@ class loginScreen extends Component {
                 icon={<Icon name="beer" size={30} color="white" />}
                 title="BREWER LOGIN"
                 onPress={() => {
-                  this.props.screenProps.loginBrewer(this.state);
-                  this.props.navigation.navigate("Brewer");
+                  this.props.screenProps.loginBrewer(this.state).then(x => {
+                    this.props.navigation.navigate("Brewer");
+                  });
                 }}
               />
 
