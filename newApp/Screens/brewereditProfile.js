@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 import {
   ScrollView,
   StyleSheet,
@@ -13,12 +12,13 @@ import {
   Modal,
   TouchableOpacity
 } from "react-native";
+import API from "../utils/API";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Avatar, Card, Button, Header } from "react-native-elements";
 import ImageElement from "../components/ImageElement";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-class homeScreen extends Component {
+class brewereditProfile extends Component {
   state = {
     modalVisible: false,
     modalImage: require("../assets/beer1.jpg"),
@@ -30,100 +30,52 @@ class homeScreen extends Component {
       require("../assets/beer5.jpg"),
       require("../assets/beer6.jpg")
     ],
-
-    search: "",
-    brewers: [],
-    modalVisible: false
+    beers: []
   };
 
   static navigationOptions = {
     header: null
   };
 
+  componentDidMount() {
+    this.loadBeers();
+  }
+
+  loadBeers = () => {
+    API.loadBeers(this.props.screenProps.currentBrewer).then(response => {
+      console.log(response);
+      this.setState({ beers: response });
+      console.log(this.state.beers);
+    });
+  };
+
   setModalVisible(visible, imageKey) {
     this.setState({ modalImage: this.state.images[imageKey] });
     this.setState({ modalVisible: visible });
   }
-  componentDidMount() {
-    this.loadFavBrewers();
-  }
-
-  loadFavBrewers = () => {
-    API.loadFavBrewers(this.props.screenProps.currentUser).then(response => {
-      this.setState({ brewers: response });
-      console.log("state " + response);
-    });
-  };
-
-  brewerProfile = id => {
-    console.log(id);
-    API.loadBrewerById(id).then(brewer => {
-      console.log("Brewer from Id", brewer);
-      this.props.screenProps.currentBrewer = brewer;
-      this.props.navigation.navigate("UserBrewer");
-    });
-  };
-
-  favorites = () => {
-    return this.state.brewers.map((brewers, key) => {
-      return (
-        <View
-          key={key}
-          style={{
-            flexDirection: "row",
-            alignItems: "stretch",
-            justifyContent: "center"
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 16,
-              marginRight: 30
-            }}
-          >
-            {brewers.BreweryName}
-          </Text>
-          <Button
-            title="Profile"
-            id={brewers.id}
-            onPress={() => this.brewerProfile(brewers.id)}
-            buttonStyle={{
-              backgroundColor: "black",
-              width: 60,
-              height: 30,
-              borderColor: "transparent",
-              borderWidth: 0,
-              borderRadius: 5,
-              marginLeft: 10
-            }}
-            titleStyle={{
-              fontSize: 12
-            }}
-          />
-          <Button
-            title="Remove"
-            buttonStyle={{
-              backgroundColor: "black",
-              width: 60,
-              height: 30,
-              borderColor: "transparent",
-              borderWidth: 0,
-              borderRadius: 5,
-              marginLeft: 10
-            }}
-            titleStyle={{
-              fontSize: 12
-            }}
-          />
-        </View>
-      );
-    });
-  };
 
   getImage() {
     return this.state.modalImage;
   }
 
+  beers() {
+    return this.state.beers.map((beers, key) => {
+      return (
+        <Card
+          key={key}
+          style={{
+            flexDirection: "column",
+            alignItems: "stretch"
+          }}
+        >
+          <Text>Beer name: {beers.beerName}</Text>
+          <Text>IBUs: {beers.IBU}</Text>
+          <Text>ABV: {beers.ABV} %</Text>
+          <Text>Tasting Notes: {beers.tastingNotes}</Text>
+        </Card>
+      );
+    });
+  }
   render() {
     let images = this.state.images.map((val, key) => {
       return (
@@ -151,7 +103,7 @@ class homeScreen extends Component {
           }}
           leftComponent={
             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-              <Icon name="chevron-left" size={30} color="black" />
+              <Icon name="arrow-left" size={30} color="black" />
             </TouchableOpacity>
           }
           centerComponent={
@@ -169,7 +121,7 @@ class homeScreen extends Component {
                 });
               }}
             >
-              <Icon name="sign-out" size={30} color="black" />
+              <Icon name="home" size={30} color="black" />
             </TouchableOpacity>
           }
         />
@@ -197,9 +149,10 @@ class homeScreen extends Component {
           }}
         >
           <Card
-            title={`${this.props.screenProps.currentUser.firstName} ${
-              this.props.screenProps.currentUser.lastName
-            }`}
+            title={this.props.screenProps.currentBrewer.BreweryName}
+            titleStyle={{
+              color: "black"
+            }}
             containerStyle={{
               marginBottom: 5,
               alignItems: "stretch",
@@ -209,24 +162,49 @@ class homeScreen extends Component {
               backgroundColor: "#d3d3d3",
               opacity: 0.7
             }}
+          >
+            <Text>Email: {this.props.screenProps.currentBrewer.email}</Text>
+            <Text>
+              Phone Number: {this.props.screenProps.currentBrewer.phone}
+            </Text>
+            <Text>
+              Address:{" "}
+              {`${this.props.screenProps.currentBrewer.address} ${
+                this.props.screenProps.currentBrewer.city
+              }, ${this.props.screenProps.currentBrewer.state} ${
+                this.props.screenProps.currentBrewer.zip
+              }`}
+            </Text>
+            <Text>
+              Description: {this.props.screenProps.currentBrewer.description}
+            </Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Edit")}
+            >
+              <Text>EDIT PROFILE</Text>
+            </TouchableOpacity>
+          </Card>
+          <Card
+            title="Beer List"
             titleStyle={{
               color: "black"
             }}
-          >
-            <Text>Email: {this.props.screenProps.currentUser.email}</Text>
-          </Card>
-          <Card
-            title="Favorite Breweries"
-            titleStyle={{ fontSize: 20, color: "black" }}
             containerStyle={{
-              backgroundColor: "#d3d3d3",
-              opacity: 0.7,
-              marginBottom: 60,
+              marginBottom: 5,
+              alignItems: "stretch",
+              justifyContent: "center",
               marginLeft: 0,
-              marginRight: 0
+              marginRight: 0,
+              backgroundColor: "#d3d3d3",
+              opacity: 0.7
             }}
           >
-            {this.favorites()}
+            {this.beers()}
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Beers")}
+            >
+              <Text>ADD A BEER</Text>
+            </TouchableOpacity>
           </Card>
           <ScrollView
             horizontal={true}
@@ -274,7 +252,7 @@ class homeScreen extends Component {
   }
 }
 
-export default homeScreen;
+export default brewereditProfile;
 
 const styles = StyleSheet.create({
   container: {

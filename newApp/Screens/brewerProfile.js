@@ -178,11 +178,6 @@ class brewerProfile extends Component {
             <Text>
               Description: {this.props.screenProps.currentBrewer.description}
             </Text>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Edit")}
-            >
-              <Text>EDIT PROFILE</Text>
-            </TouchableOpacity>
           </Card>
           <Card
             title="Beer List"
@@ -200,11 +195,6 @@ class brewerProfile extends Component {
             }}
           >
             {this.beers()}
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Beers")}
-            >
-              <Text>ADD A BEER</Text>
-            </TouchableOpacity>
           </Card>
           <ScrollView
             horizontal={true}

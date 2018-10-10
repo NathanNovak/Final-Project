@@ -51,7 +51,7 @@ class brewerList extends Component {
     API.loadBrewerById(id).then(brewer => {
       console.log("Brewer from Id", brewer);
       this.props.screenProps.currentBrewer = brewer;
-      this.props.navigation.navigate("Brewer");
+      this.props.navigation.navigate("UserBrewer");
     });
   };
 
