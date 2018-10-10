@@ -71,14 +71,17 @@ class homeScreen extends Component {
           key={key}
           style={{
             flexDirection: "row",
-            alignItems: "stretch",
-            justifyContent: "center"
+            alignItems: "flex-end",
+            marginTop: 5,
+            marginBottom: 5
           }}
         >
           <Text
             style={{
+              flexDirection: "column",
+              flex: 2,
               fontSize: 16,
-              marginRight: 30
+              alignSelf: "flex-start"
             }}
           >
             {brewers.BreweryName}

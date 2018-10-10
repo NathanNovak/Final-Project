@@ -78,14 +78,17 @@ class brewerList extends Component {
           key={key}
           style={{
             flexDirection: "row",
-            alignItems: "stretch",
-            justifyContent: "center"
+            alignItems: "flex-end",
+            marginTop: 5,
+            marginBottom: 5
           }}
         >
           <Text
             style={{
+              flexDirection: "column",
+              flex: 2,
               fontSize: 16,
-              marginRight: 30
+              alignSelf: "flex-start"
             }}
           >
             {brewers.BreweryName}
@@ -172,7 +175,12 @@ class brewerList extends Component {
           <Card
             title="Breweries in Your Area"
             titleStyle={{ fontSize: 20, color: "black" }}
-            containerStyle={{ backgroundColor: "#d3d3d3", opacity: 0.7 }}
+            containerStyle={{
+              backgroundColor: "#d3d3d3",
+              opacity: 0.7,
+              marginLeft: 0,
+              marginRight: 0
+            }}
           >
             {this.brewers()}
 
