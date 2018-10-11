@@ -107,7 +107,7 @@ class brewerList extends Component {
               marginLeft: 10
             }}
             titleStyle={{
-              fontSize: 12
+              fontSize: 10
             }}
           />
           <Button
@@ -123,7 +123,7 @@ class brewerList extends Component {
               marginLeft: 10
             }}
             titleStyle={{
-              fontSize: 12
+              fontSize: 10
             }}
           />
         </View>

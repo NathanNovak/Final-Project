@@ -166,20 +166,23 @@ class brewerProfile extends Component {
               opacity: 0.7
             }}
           >
-            <Text>Email: {this.props.screenProps.currentBrewer.email}</Text>
             <Text>
-              Phone Number: {this.props.screenProps.currentBrewer.phone}
-            </Text>
+              <Text style={styles.titleText}>Email:</Text> <Text>{this.props.screenProps.currentBrewer.email}</Text></Text>
             <Text>
-              Address:{" "}
+              <Text style={styles.titleText}>Phone Number:</Text><Text>{this.props.screenProps.currentBrewer.phone}</Text></Text>
+            <Text>
+              <Text style={styles.titleText}>Address:</Text>
+              <Text>
+              {" "}
               {`${this.props.screenProps.currentBrewer.address} ${
                 this.props.screenProps.currentBrewer.city
               }, ${this.props.screenProps.currentBrewer.state} ${
                 this.props.screenProps.currentBrewer.zip
               }`}
+              </Text>
             </Text>
             <Text>
-              Description: {this.props.screenProps.currentBrewer.description}
+              <Text style={styles.titleText}>Description:</Text> <Text>{this.props.screenProps.currentBrewer.description}</Text>
             </Text>
           </Card>
           <Card
@@ -272,6 +275,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black"
+  },
+  titleText: {
+    fontSize: 15,
+    fontWeight: "bold", 
   },
   header: {
     backgroundColor: "#d3d3d3"
