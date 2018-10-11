@@ -100,7 +100,7 @@ class homeScreen extends Component {
               marginLeft: 10
             }}
             titleStyle={{
-              fontSize: 12
+              fontSize: 10
             }}
           />
           <Button
@@ -115,7 +115,7 @@ class homeScreen extends Component {
               marginLeft: 10
             }}
             titleStyle={{
-              fontSize: 12
+              fontSize: 10
             }}
           />
         </View>
@@ -219,7 +219,12 @@ class homeScreen extends Component {
               color: "black"
             }}
           >
-            <Text>Email: {this.props.screenProps.currentUser.email}</Text>
+            <Text>
+              <Text style={styles.titleText} >
+              Email:
+              </Text>      
+              <Text>{this.props.screenProps.currentUser.email}</Text>
+            </Text>
           </Card>
           <Card
             title="Favorite Breweries"
@@ -307,6 +312,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black"
+  },
+  titleText: {
+    fontSize: 15,
+    fontWeight: "bold", 
   },
   header: {
     backgroundColor: "#d3d3d3"
